@@ -1,0 +1,20 @@
+---
+- name: Install required packages from yum
+  yum: name=MySQL-python state=present
+
+- name: Install Mysql module
+  pip: 	name=mysql state=present
+
+- name: centos | installing mariadb mysql
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - mariadb-server
+    - mariadb
+
+- name: centos | ensuring mariadb mysql is enabled on boot and started
+  service:
+    name: mariadb
+    state: started
+    enabled: yes

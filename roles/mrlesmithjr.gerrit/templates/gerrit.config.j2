@@ -1,0 +1,45 @@
+[gerrit]
+	basePath = git
+	canonicalWebUrl = http://{{ ansible_hostname }}.{{ pri_domain_name }}:{{ gerrit_http_listen_port }}/
+[database]
+{% for item in gerrit_db_info %}
+	type = {{ item.type }}
+	database = {{ item.db }}
+	hostname = {{ item.host }}
+	username = {{ item.user }}
+{% endfor %}
+[index]
+	type = LUCENE
+[auth]
+	type = {{ gerrit_auth_type }}
+[sendemail]
+	smtpServer = {{ gerrit_smtp_server }}
+[container]
+{% for item in gerrit_account_info %}
+	user = {{ item.user }}
+{% endfor %}
+	javaHome = {{ gerrit_java_home }}
+[sshd]
+	listenAddress = *:{{ gerrit_sshd_listen_port }}
+[httpd]
+	listenUrl = http://*:{{ gerrit_http_listen_port }}/
+[cache]
+	directory = cache
+[gitweb]
+	type = gitweb
+	cgi = {{ gitweb_cgi_path }}
+{% if gerrit_auth_type == "LDAP_BIND" %}
+[ldap]
+{%   for item in gerrit_ldap_info %}
+	server = {{ item.server }}
+	accountBase = {{ item.accountbase }}
+	accountPattern = {{ item.accountpattern }}
+	accountScope = {{ item.accountscope }}
+	groupBase = {{ item.groupbase }}
+	accountFullName = {{ item.accountfullname }}
+	accountMemberField = {{ item.accountmemberfield }}
+	accountEmailAddress = {{ item.accountemailaddress }}
+	accountSshUserName = {{ item.accountsshusername }}
+	referral = {{ item.referral }}
+	{%   endfor %}
+	{% endif %}
