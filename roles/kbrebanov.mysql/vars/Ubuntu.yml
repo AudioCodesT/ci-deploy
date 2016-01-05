@@ -1,0 +1,17 @@
+---
+# vars file for mysql (Ubuntu specific)
+
+mysql_server_packages:
+  - mysql-server-{{ mysql_version }}
+  - python-mysqldb
+mysql_service_name: mysql
+mysql_config_path: /etc/mysql/my.cnf
+mysql_include_dir: /etc/mysql/conf.d
+
+mysql_mysqld_basedir: /usr
+mysql_mysqld_datadir: /var/lib/mysql
+mysql_mysqld_lc_messages_dir: /usr/share/mysql
+mysql_mysqld_log_error: /var/log/mysql/error.log
+mysql_mysqld_pid_file: /var/run/mysqld/mysqld.pid
+mysql_mysqld_tmpdir: /tmp
+mysql_mysqld_user: mysql

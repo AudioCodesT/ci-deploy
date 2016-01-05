@@ -1,6 +1,6 @@
 ---
 - name: Installs Gerrit Code Review
-  hosts: gerrit-servers
+  hosts: gerrit-ubuntu-servers
   sudo: true
   vars:
     - gerrit_db_info:
@@ -10,13 +10,9 @@
           user: gerrit
           pass: gerrit
     - install_mysql: true
-    - pip_install_method: "installer"
-#    - java_oracle_version: "7u80"
   roles:
-    - geerlingguy.java
-    - pip
-    - ansible-apache2
-    - { role: ansible-mariadb-mysql, when: install_mysql is defined and install_mysql }
-    - geerlingguy.git
-    - ansible-gerrit
+    - kbrebanov.java
+    - kbrebanov.git
+    - { role: kbrebanov.mysql, when: install_mysql is defined and install_mysql }
+    - kbrebanov.gerrit
   tasks:

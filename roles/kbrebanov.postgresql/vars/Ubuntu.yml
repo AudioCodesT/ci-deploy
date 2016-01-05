@@ -1,0 +1,8 @@
+---
+# vars file for postgresql (Ubuntu specific)
+
+postgresql_packages:
+  - postgresql={{ postgresql_version }}*
+  - libpq-dev={{ postgresql_version }}*
+  - python-psycopg2
+postgresql_configuration_directory: /etc/postgresql/{{ postgresql_version }}/main

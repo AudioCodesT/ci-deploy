@@ -1,0 +1,48 @@
+---
+# defaults file for gerrit
+
+#gerrit_download_server: https://gerrit-releases.storage.googleapis.com
+gerrit_download_server: https://s3.eu-central-1.amazonaws.com/tikalk-ac/gerrit-war
+gerrit_download_maven: false
+#gerrit_version: 2.12
+gerrit_version: 2.12_patched
+#gerrit_sha256sum: 8f2e2e61b939664a20a025ef4f99095c08be14342ea5457bf5613bccedabcd27
+gerrit_sha256sum: ea78f732298f6b3ce3bc837734f686e1f29d5f8081bdc036341ddee727d9741b
+gerrit_install_plugins: []
+
+#gerrit_auth_type: 'OPENID'
+gerrit_auth_type: 'DEVELOPMENT_BECOME_ANY_ACCOUNT'
+gerrit_canonical_web_url: 'http://localhost:8080/'
+gerrit_container_java_home: /usr/lib/jvm/java-8-openjdk-amd64/jre
+gerrit_database_type: 'h2'
+gerrit_database_db: 'db/ReviewDB'
+gerrit_database_username: ''
+gerrit_database_password: ''
+gerrit_database_hostname: 'localhost'
+gerrit_httpd_listen_url: 'http://*:8080/'
+gerrit_sendemail_smtp_server: 'localhost'
+gerrit_sshd_listen_address: '*:29418'
+
+gerrit_ldap_server: ldap://ldap.example.com
+gerrit_ldap_account_base: ou=people,dc=example,dc=com
+gerrit_ldap_account_scope: subtree
+gerrit_ldap_account_pattern: (uid=${username})
+gerrit_ldap_account_full_name: displayName
+gerrit_ldap_account_email_address: mail
+gerrit_ldap_group_base: ou=groups,dc=example,dc=com
+gerrit_ldap_group_scope: subtree
+gerrit_ldap_group_pattern: (cn=${groupname})
+gerrit_ldap_group_member_pattern: (|(memberUid=${username})(gidNumber=${gidNumber}))
+gerrit_ldap_group_name: cn
+
+gerrit_plugins_allow_remote_admin: true
+
+gerrit_plugins:
+  - url: https://s3.eu-central-1.amazonaws.com/tikalk-ac/gerrit-plugins
+    name: ac-gerrit.jar
+  - url: https://s3.eu-central-1.amazonaws.com/tikalk-ac/gerrit-plugins
+    name: download-commands.jar
+  - url: https://s3.eu-central-1.amazonaws.com/tikalk-ac/gerrit-plugins
+    name: gitblit.jar
+  - url: https://s3.eu-central-1.amazonaws.com/tikalk-ac/gerrit-plugins
+    name: reviewnotes.jar

@@ -1,0 +1,78 @@
+---
+# tasks file for postgresql
+
+- name: Include distribution specific variables
+  include_vars: "{{ ansible_distribution }}.yml"
+  tags: postgresql
+
+- include: CentOS.yml
+  when: ansible_distribution == "CentOS"
+  tags: postgresql
+
+- include: Ubuntu.yml
+  when: ansible_distribution == "Ubuntu"
+  tags: postgresql
+
+- name: Create environment configuration
+  template: >
+    src=environment.j2
+    dest={{ postgresql_configuration_directory }}/environment
+    owner=postgres
+    group=postgres
+    mode=0644
+  notify: restart postgresql
+  tags: postgresql
+
+- name: Create pg_ctl configuration
+  template: >
+    src=pg_ctl.conf.j2
+    dest={{ postgresql_configuration_directory }}/pg_ctl.conf
+    owner=postgres
+    group=postgres
+    mode=0644
+  notify: restart postgresql
+  tags: postgresql
+
+- name: Create pg_hba configuration
+  template: >
+    src=pg_hba.conf.j2
+    dest={{ postgresql_configuration_directory }}/pg_hba.conf
+    owner=postgres
+    group=postgres
+    mode=0640
+  notify: restart postgresql
+  tags: postgresql
+
+- name: Create pg_ident configuration
+  template: >
+    src=pg_ident.conf.j2
+    dest={{ postgresql_configuration_directory }}//pg_ident.conf
+    owner=postgres
+    group=postgres
+    mode=0640
+  notify: restart postgresql
+  tags: postgresql
+
+- name: Create postgresql configuration
+  template: >
+    src=postgresql.conf.j2
+    dest={{ postgresql_configuration_directory }}/postgresql.conf
+    owner=postgres
+    group=postgres
+    mode=0644
+  notify: restart postgresql
+  tags: postgresql
+
+- name: Create start configuration
+  template: >
+    src=start.conf.j2
+    dest={{ postgresql_configuration_directory }}/start.conf
+    owner=postgres
+    group=postgres
+    mode=0644
+  notify: restart postgresql
+  tags: postgresql
+
+- name: Ensure PostgreSQL is started and enabled on boot
+  service: name=postgresql state=started enabled=yes
+  tags: postgresql

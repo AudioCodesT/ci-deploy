@@ -1,0 +1,23 @@
+---
+# tasks file for mysql (Ubuntu specific)
+
+- name: Set root password
+  debconf: >
+    name=mysql-server-{{ mysql_version }}
+    question='mysql-server/root_password'
+    value={{ mysql_root_password }}
+    vtype='password'
+  tags: mysql
+
+- name: Confirm root password
+  debconf: >
+    name=mysql-server-{{ mysql_version }}
+    question='mysql-server/root_password_again'
+    value={{ mysql_root_password }}
+    vtype='password'
+  tags: mysql
+
+- name: Install MySQL server packages
+  apt: name={{ item }} state=present update_cache=true
+  with_items: mysql_server_packages
+  tags: mysql
