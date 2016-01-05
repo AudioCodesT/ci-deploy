@@ -4,7 +4,7 @@
   sudo: true
   vars:
     - gerrit_db_info:
-        - host: gerrit
+        - host: localhost
           type: mysql
           db: reviewdb
           user: gerrit
@@ -17,5 +17,6 @@
     - pip
     - ansible-apache2
     - { role: ansible-mariadb-mysql, when: install_mysql is defined and install_mysql }
+    - geerlingguy.git
     - ansible-gerrit
   tasks:

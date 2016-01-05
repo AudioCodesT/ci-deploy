@@ -1,2 +1,2 @@
 [gerrit-servers]
-gerrit ansible_ssh_host=52.28.197.226
+gerrit ansible_ssh_host=52.29.14.82
