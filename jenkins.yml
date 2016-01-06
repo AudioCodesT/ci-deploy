@@ -1,0 +1,10 @@
+---
+- name: Installs Jenkins CI server
+  hosts: jenkins-servers
+  sudo: true
+   	
+  vars:
+    - ansible_ssh_user: centos
+
+  roles:
+    - geerlingguy.jenkins
