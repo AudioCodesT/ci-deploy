@@ -1,0 +1,8 @@
+---
+- name: Installs Jenkins Java slave
+  hosts: jenkins-slaves
+  sudo: true
+   	
+ 
+  roles:
+    - aeriscloud.docker
