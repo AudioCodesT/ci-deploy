@@ -9,3 +9,4 @@
   roles:
     - williamyeh.oracle-java
     - geerlingguy.git
+    - pcextreme.mariadb
