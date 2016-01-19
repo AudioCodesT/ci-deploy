@@ -22,8 +22,8 @@ galaxy_info:
     versions:
   #  - all
   #  - 5
-    - 6
-  #  - 7
+  #  - 6
+    - 7
   #- name: GenericUNIX
   #  versions:
   #  - all
@@ -107,14 +107,14 @@ galaxy_info:
   #
   categories:
   #- cloud
-  #- cloud:ec2
+  - cloud:ec2
   #- cloud:gce
   #- cloud:rax
   #- clustering
   #- database
   #- database:nosql
   #- database:sql
-  - development
+  #- development
   #- monitoring
   #- networking
   - packaging

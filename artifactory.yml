@@ -10,7 +10,6 @@
 
   roles:
     - kbrebanov.unzip
-    #- geerlingguy.java
     - williamyeh.oracle-java
 
     - pcextreme.mariadb
