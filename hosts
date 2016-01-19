@@ -1,5 +1,5 @@
 [jenkins-servers]
-jenkins ansible_ssh_host=52.29.237.142
+jenkins ansible_ssh_host=172.16.132.182
 
 [jenkins-slaves]
 jenkins-slave ansible_ssh_host=52.29.249.190
@@ -11,4 +11,4 @@ artifactory ansible_ssh_host=52.29.226.62
 gerrit ansible_ssh_host=52.29.14.82
 
 [gerrit-ubuntu-servers]
-gerrit ansible_ssh_host=52.28.85.72
+gerrit ansible_ssh_host=172.16.133.77

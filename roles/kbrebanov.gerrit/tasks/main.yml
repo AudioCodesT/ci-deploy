@@ -13,11 +13,11 @@
   when: ansible_distribution == "Ubuntu"
   tags: gerrit
 
-- include: postgresql.yml
-  when: gerrit_database_type == "postgresql"
+- include: mysql.yml
+  when: gerrit_database_type == "mysql"
   tags:
     - gerrit
-    - postgresql
+    - mysql
 
 - name: Create Gerrit installation directory
   file: >
