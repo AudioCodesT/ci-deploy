@@ -1,3 +1,6 @@
+[console]
+localhost ansible_connection=local
+
 [jenkins-servers]
 jenkins ansible_ssh_host=172.16.132.182
 

@@ -1,7 +1,14 @@
 ---
 # Select one or the other
 #artifactory_database: postgresql
-artifactory_database: mysql
+
+artifactory_host_name: '172.16.143.119'
+artifactory_database: 'mysql'
+artifactory_database_db: 'artdb'
+artifactory_database_hostname: 'rdci.c1tyrsglic7l.eu-central-1.rds.amazonaws.com'
+artifactory_database_hostname_pass: '1TTqYAHtdT'
+artifactory_database_main_username: 'root'
+artifactory_database_encoding: utf8
 
 # defaults file for bbaassssiiee.artifactory
 #artifactory_version: "3.4.2"

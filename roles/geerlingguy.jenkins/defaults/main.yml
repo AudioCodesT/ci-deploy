@@ -3,7 +3,10 @@ jenkins_connection_delay: 5
 jenkins_connection_retries: 60
 jenkins_hostname: localhost
 jenkins_http_port: 8080
+jenkins_proxy_port: 80
 jenkins_jar_location: /opt/jenkins-cli.jar
+jenkins_proxy_auth: false
+jenkins_logdir: /var/log/jenkins            # Jenkins logs location
 jenkins_plugins:
   - parameterized-trigger
   - matrix-project
