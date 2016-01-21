@@ -1,25 +1,18 @@
 ---
-dependencies:
-  - { role: geerlingguy.java }
-  - { role: geerlingguy.repo-epel } 
+dependencies: []
 
 galaxy_info:
   author: geerlingguy
-  description: Jenkins CI
+  description: EPEL repository for RHEL/CentOS.
   company: "Midwestern Mac, LLC"
   license: "license (BSD, MIT)"
   min_ansible_version: 1.4
   platforms:
   - name: EL
     versions:
+    - 4
+    - 5
     - 6
     - 7
-  - name: Debian
-    versions:
-    - all
-  - name: Ubuntu
-    versions:
-    - all
   categories:
-    - development
     - packaging
