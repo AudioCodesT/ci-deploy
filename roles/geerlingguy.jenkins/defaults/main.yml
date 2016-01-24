@@ -71,4 +71,5 @@ jenkins_plugins:
   - workflow-step-api
   - workflow-support
   - xshell
+  - greenballs
 jenkins_url_prefix: ""

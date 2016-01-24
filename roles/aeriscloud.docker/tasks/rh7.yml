@@ -1,5 +1,5 @@
-- name: "Install docker"
+- name: "Install docker on rh7"
   yum: >
-    name=docker
+    name=docker-engine
     state=present
   notify: Restart Docker
