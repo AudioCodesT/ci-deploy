@@ -5,7 +5,7 @@ localhost ansible_connection=local
 jenkins ansible_ssh_host=172.16.132.182
 
 [jenkins-slaves]
-jenkins-slave ansible_ssh_host=52.29.249.190
+jenkins-slave ansible_ssh_host=172.16.142.165
 
 [artifactory-servers]
 artifactory ansible_ssh_host=172.16.143.119

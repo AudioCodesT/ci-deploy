@@ -19,6 +19,6 @@ docker_opts: ''
 #
 docker_listen_tcp: True
 docker_listen_port: 4243
-docker_opts: '"-H tcp://127.0.0.1:{{docker_listen_port}} -H unix:///var/run/docker.sock"'
+docker_opts: '"-H tcp://0.0.0.0:{{docker_listen_port}} -H unix:///var/run/docker.sock"'
 #docker_opts: '"-H tcp://{{ansible_eth1.ipv4.address}}:{{docker_listen_port}}"'
 ##### ---

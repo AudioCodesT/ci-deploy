@@ -4,9 +4,18 @@
 - include: rh7.yml
   when: ansible_distribution_major_version|int == 7
 
+#- name: "Change docker options"
+#  lineinfile: >
+#    line='ExecStart=/usr/bin/docker daemon -H tcp://0.0.0.0:{{docker_listen_port}} -H unix:///var/run/docker.sock'
+#    regexp='^ExecStart='
+#    dest=/usr/lib/systemd/system/docker.service
+#    state=present 
+#  tags: docker
+
 - name: "Change docker options"
   lineinfile: >
     line='other_args={{ docker_opts }}'
     regexp='^other_args='
     dest=/etc/sysconfig/docker
-    state=present
+    state=present 
+  tags: docker
