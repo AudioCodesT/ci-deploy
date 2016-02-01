@@ -1,4 +1,8 @@
 ---
+-   name: "Disable selinux"
+    selinux: state=disabled
+    sudo: yes
+
 -   name: Install python setup tools
     yum: name=python-setuptools
     tags: docker
@@ -18,4 +22,4 @@
 -   name: Make sure Docker is running
     service: name=docker state=running
     tags: docker
-    when: docker_daemon == true
+#    when: docker_daemon == true

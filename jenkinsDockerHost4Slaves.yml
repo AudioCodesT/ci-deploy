@@ -9,5 +9,6 @@
     - docker_daemon: true
  
   roles:
+    - dns
     - kbrebanov.git
     - docker

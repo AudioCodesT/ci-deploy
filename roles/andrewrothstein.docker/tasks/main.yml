@@ -1,0 +1,19 @@
+---
+- stat: path='/usr/bin/docker'
+  register: dockerBinary
+
+- name: install....
+  when: dockerBinary.stat.exists == False
+  include: RunInstaller.yml
+
+- name: (Debian) configuring...
+  when: ansible_os_family == 'Debian'
+  include: Debian.yml
+
+- name: (RedHat) configuring...
+  when: ansible_os_family == 'RedHat'
+  include: RedHat.yml
+  
+- name : launch docker...
+  service: name=docker state=restarted enabled=yes
+

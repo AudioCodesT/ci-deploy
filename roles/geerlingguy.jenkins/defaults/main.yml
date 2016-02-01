@@ -72,4 +72,5 @@ jenkins_plugins:
   - workflow-support
   - xshell
   - greenballs
+  - docker-plugin
 jenkins_url_prefix: ""
