@@ -12,3 +12,8 @@ artifactory ansible_ssh_host=172.16.143.119
 
 [gerrit-ubuntu-servers]
 gerrit ansible_ssh_host=172.16.133.77
+
+[jenkins-hosts:children]
+jenkins-servers
+jenkins-slaves
+

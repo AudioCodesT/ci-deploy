@@ -1,0 +1,18 @@
+---
+- name : download docker install script
+  command: wget -O /tmp/install.docker.sh https://get.docker.com
+  args:
+    creates: /tmp/install.docker.sh
+
+- name: chmod /tmp/install.docker.sh...
+  file : >-
+    path=/tmp/install.docker.sh
+    owner=root
+    group=root
+    mode=0755
+
+- name: install docker
+  command: /tmp/install.docker.sh
+  args:
+    creates: /usr/bin/docker
+
