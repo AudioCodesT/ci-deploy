@@ -13,7 +13,7 @@ gerrit_install_plugins: []
 #gerrit_auth_type: 'OPENID'
 gerrit_auth_type: 'DEVELOPMENT_BECOME_ANY_ACCOUNT'
 gerrit_canonical_web_url: 'http://172.16.133.77:8080/'
-gerrit_container_java_home: /usr/lib/jvm/java-8-openjdk-amd64/jre
+gerrit_container_java_home: /usr/lib/jvm/java-7-oracle
 gerrit_host_name: '172.16.133.77'
 gerrit_database_type: 'mysql'
 gerrit_database_db: 'reviewdb'
