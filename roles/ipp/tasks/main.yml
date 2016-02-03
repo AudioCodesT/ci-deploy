@@ -1,0 +1,4 @@
+#- name: unpack
+- unarchive: src=/home/centos/ipp_test/ipp_toolchain.bz.tar dest=/opt
+
+

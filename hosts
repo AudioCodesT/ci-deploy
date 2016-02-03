@@ -17,3 +17,5 @@ gerrit ansible_ssh_host=172.16.133.77
 jenkins-servers
 jenkins-slaves
 
+[ipp-compilation-servers]
+ipp ansible_ssh_host=172.16.132.56
