@@ -34,6 +34,7 @@ server {
         proxy_redirect http://{{jenkins_hostname}}:{{jenkins_http_port}} https://{{jenkins_hostname}};
 {% endif %}
         
+	}
 
     error_log         {{jenkins_logdir}}/nginx-error.log;
     access_log        {{jenkins_logdir}}/nginx-access.log;
