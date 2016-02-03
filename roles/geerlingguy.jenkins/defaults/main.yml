@@ -1,8 +1,11 @@
 ---
 jenkins_connection_delay: 5
 jenkins_connection_retries: 60
-jenkins_hostname: localhost
+jenkins_hostname: jenkins
 jenkins_http_port: 8080
+jenkins_https_port: 443
+jenkins_ssl_cert: /etc/ssl/certs/awsrdjenkins.cer
+jenkins_ssl_key: /etc/ssl/certs/awsrdjenkins.key
 jenkins_proxy_port: 80
 jenkins_jar_location: /opt/jenkins-cli.jar
 jenkins_proxy_auth: false
