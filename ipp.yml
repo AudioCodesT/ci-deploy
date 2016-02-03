@@ -1,0 +1,14 @@
+---
+- name: Installs ipp compilation server 
+  hosts: ipp-compilation-servers
+  sudo: true
+ 
+  vars:
+    - ansible_ssh_user: centos
+    - ansible_distribution: CentOS
+
+  roles:
+    - geerlingguy.repo-epel
+    - kbrebanov.unzip
+    - ipp
+  tasks:
