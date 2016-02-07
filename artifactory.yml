@@ -9,5 +9,5 @@
     - java_subversion: 66
 
   roles:
-    
+    - dns
     - bbaassssiiee.artifactory

@@ -4,5 +4,6 @@
   sudo: true
  
   roles:
+    - dns
     - kbrebanov.gerrit
   tasks:
