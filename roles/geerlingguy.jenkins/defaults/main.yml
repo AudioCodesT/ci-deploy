@@ -76,4 +76,5 @@ jenkins_plugins:
   - xshell
   - greenballs
   - docker-plugin
+  - monitoring
 jenkins_url_prefix: ""
