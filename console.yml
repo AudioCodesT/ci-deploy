@@ -4,6 +4,7 @@
   sudo: true
  
   roles:
+    - dns
     - franklinkim.vim
   vars:
     vim_config:

@@ -7,6 +7,7 @@
     - ansible_ssh_user: centos
 
   roles:
+    - dns
     - williamyeh.oracle-java
     - geerlingguy.git
     - pcextreme.mariadb

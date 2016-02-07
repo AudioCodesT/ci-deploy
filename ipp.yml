@@ -8,7 +8,7 @@
     - ansible_distribution: CentOS
 
   roles:
-    - geerlingguy.repo-epel
+    - dns
     - kbrebanov.unzip
     - ipp
   tasks:
