@@ -5,7 +5,7 @@
 gerrit_download_server: http://artifactory:8081/artifactory/libs-release-local/com/google/gerrit/gerrit-war/2.12_patched
 gerrit_download_maven: false
 #gerrit_version: 2.12
-gerrit_version: gerrit-war-2.12_patched.war
+gerrit_version: gerrit-war-2.12_patched
 #gerrit_sha256sum: 8f2e2e61b939664a20a025ef4f99095c08be14342ea5457bf5613bccedabcd27
 gerrit_sha256sum: 563b74438bb48c7c4b0a78d860aed3e819bffe953b91b8785d7e0477f7bcfd20
 gerrit_install_plugins: []
