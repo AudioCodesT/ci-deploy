@@ -77,4 +77,5 @@ jenkins_plugins:
   - greenballs
   - docker-plugin
   - monitoring
+  - testInProgress
 jenkins_url_prefix: ""
