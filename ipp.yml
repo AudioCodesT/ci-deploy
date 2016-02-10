@@ -10,5 +10,6 @@
   roles:
     - dns
     - kbrebanov.unzip
+    - bzip2
     - ipp
   tasks:
