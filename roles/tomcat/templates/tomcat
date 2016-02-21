@@ -17,18 +17,11 @@
 
 # CM specific configuration
 
-export JAVA_VERSION="{{ ac.java_version }}"
-export TOMCAT_VERSION="{{ ac.tomcat_version }}"
+export TOMCAT_VERSION="{{ tomcat.version }}"
 export AC_USER={{ ac.user }}
 
 #Location of AudioCodes home / AC_HOME
 export AC_HOME="{{ ac.runtime_dir }}"
- 
-#Location of JAVA_HOME (bin files)
-export JAVA_HOME=$AC_HOME/jdk$JAVA_VERSION
- 
-#Add Java binary files to PATH
-export PATH=$JAVA_HOME/bin:$PATH
  
 #CATALINA_HOME is the location of the bin files of Tomcat  
 export CATALINA_HOME=$AC_HOME/apache-tomcat-$TOMCAT_VERSION  

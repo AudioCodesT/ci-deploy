@@ -1,6 +1,7 @@
 ---
 - name: Installs ipp compilation server 
   hosts: sanjer-servers
+  #gather_facts: no
   sudo: true
  
   vars:
@@ -8,6 +9,7 @@
     - ansible_distribution: CentOS
 
   roles:
+    - dns
     - common
     - williamyeh.oracle-java
     - tomcat
