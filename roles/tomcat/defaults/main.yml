@@ -1,0 +1,18 @@
+---
+
+#
+# variables needed to be defined in user's playbook
+#
+
+ac:
+  runtime_dir: '/opt/ac'
+  user: 'audiocodes'
+  home: '/home/audiocodes'
+tomcat:
+  version: '8.0.21'
+  webapps_dir: '/opt/ac/tomcat/webapps' 
+  listen_port: '8080'
+  s3_base_url: 'https://s3.eu-central-1.amazonaws.com/audiocodes-artifacts/'
+  suffix: 'tar.gz'
+  #artifact_name: 'apache-tomcat-8.0.21.tar.gz'
+
