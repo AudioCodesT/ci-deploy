@@ -19,3 +19,8 @@ jenkins-slaves
 
 [ipp-compilation-servers]
 ipp ansible_ssh_host=172.16.132.56
+
+
+[sanjer-servers]
+sanjer ansible_ssh_host=172.16.145.11
+

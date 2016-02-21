@@ -1,0 +1,15 @@
+---
+- name: Installs ipp compilation server 
+  hosts: sanjer-servers
+  sudo: true
+ 
+  vars:
+    - ansible_ssh_user: centos
+    - ansible_distribution: CentOS
+
+  roles:
+    - common
+    - williamyeh.oracle-java
+    - tomcat
+  
+  tasks:
