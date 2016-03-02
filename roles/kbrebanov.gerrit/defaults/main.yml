@@ -12,7 +12,7 @@ gerrit_install_plugins: []
 
 #gerrit_auth_type: 'OPENID'
 gerrit_auth_type: 'DEVELOPMENT_BECOME_ANY_ACCOUNT'
-gerrit_canonical_web_url: 'http://gerrit:8080/'
+gerrit_canonical_web_url: 'https://gerrit/'
 gerrit_container_java_home: /usr/lib/jvm/java-7-oracle
 gerrit_host_name: 'gerrit'
 gerrit_database_type: 'mysql'
@@ -22,9 +22,16 @@ gerrit_database_password: 'gerrit2'
 gerrit_database_hostname: 'rdci.c1tyrsglic7l.eu-central-1.rds.amazonaws.com'
 gerrit_database_hostname_pass: '1TTqYAHtdT'
 gerrit_database_main_username: root
-gerrit_httpd_listen_url: 'http://*:8080/'
+gerrit_httpd_listen_url: 'proxy-https://*:8080/'
 gerrit_sendemail_smtp_server: 'localhost'
 gerrit_sshd_listen_address: '*:29418'
+gerrit_proxy_port: '80'
+gerrit_http_port: '8080'
+gerrit_https_port: 443
+gerrit_ssl_cert: /etc/ssl/certs/awsrdgerrit.cer
+gerrit_ssl_key: /etc/ssl/certs/awsrdgerrit.key
+
+gerrit_logdir: /var/gerrit/logs
 
 gerrit_ldap_server: ldap://ldap.example.com
 gerrit_ldap_account_base: ou=people,dc=example,dc=com
