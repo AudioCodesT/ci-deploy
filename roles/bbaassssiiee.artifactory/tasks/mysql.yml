@@ -35,7 +35,7 @@
 
 - name: 'create artifactory database user in mysql'
   mysql_user: 
-    host={{artifactory_host_name}} 
+    host={{artifactory_host_ip}} 
     login_host={{artifactory_database_hostname}} 
     login_user={{artifactory_database_main_username}} 
     login_password={{artifactory_database_hostname_pass}} 

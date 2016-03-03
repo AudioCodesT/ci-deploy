@@ -4,6 +4,9 @@
 # Download & install
 - include: install.yml
 
+# Configure Gerrit reverse proxy via nginx
+- include: nginx.yml
+
 # Database configuration, one or the other
 - include: postgresql.yml
   when: artifactory_database == 'postgresql'
