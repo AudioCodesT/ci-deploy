@@ -10,8 +10,7 @@ gerrit_version: war-2.12_patched
 gerrit_sha256sum: 563b74438bb48c7c4b0a78d860aed3e819bffe953b91b8785d7e0477f7bcfd20
 gerrit_install_plugins: []
 
-#gerrit_auth_type: 'OPENID'
-gerrit_auth_type: 'DEVELOPMENT_BECOME_ANY_ACCOUNT'
+gerrit_auth_type: 'LDAP'
 gerrit_canonical_web_url: 'https://gerrit/'
 gerrit_container_java_home: /usr/lib/jvm/java-7-oracle
 gerrit_host_name: 'gerrit'
@@ -33,17 +32,12 @@ gerrit_ssl_key: /etc/ssl/certs/awsrdgerrit.key
 
 gerrit_logdir: /var/gerrit/logs
 
-gerrit_ldap_server: ldap://ldap.example.com
-gerrit_ldap_account_base: ou=people,dc=example,dc=com
-gerrit_ldap_account_scope: subtree
-gerrit_ldap_account_pattern: (uid=${username})
-gerrit_ldap_account_full_name: displayName
-gerrit_ldap_account_email_address: mail
-gerrit_ldap_group_base: ou=groups,dc=example,dc=com
-gerrit_ldap_group_scope: subtree
-gerrit_ldap_group_pattern: (cn=${groupname})
-gerrit_ldap_group_member_pattern: (|(memberUid=${username})(gidNumber=${gidNumber}))
-gerrit_ldap_group_name: cn
+gerrit_ldap_server: ldaps://aclads01.corp.audiocodes.com:3269
+gerrit_ldap_username: aws
+gerrit_ldap_password: AudiocodesAWS
+gerrit_ldap_account_base: dc=corp,dc=audiocodes,dc=com
+gerrit_ldap_group_base: dc=corp,dc=audiocodes,dc=com
+gerrit_account_email_address: ${mail.toLowerCase}
 
 gerrit_plugins_allow_remote_admin: true
 
