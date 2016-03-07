@@ -78,4 +78,5 @@ jenkins_plugins:
   - docker-plugin
   - monitoring
   - testInProgress
+  - cppcheck
 jenkins_url_prefix: ""
