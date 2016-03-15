@@ -15,6 +15,13 @@
     pip: name=docker-py
     tags: docker
 
+- template: 
+    src: "docker.repo.j2" 
+    dest: "/etc/yum.repos.d/docker.repo" 
+    owner: root 
+    group: root 
+    mode: 0644
+
 -   name: Install Docker
     yum: name=docker state=latest
     tags: docker

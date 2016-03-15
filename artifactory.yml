@@ -10,4 +10,5 @@
 
   roles:
     - dns
+    - geerlingguy.repo-epel
     - bbaassssiiee.artifactory

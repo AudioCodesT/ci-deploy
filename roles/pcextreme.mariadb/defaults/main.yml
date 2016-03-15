@@ -2,5 +2,5 @@
 mariadb_version: 10.1.10
 ansible_distribution_major_version: 7
 
-mysql_conf_tpl: change_me
+mysql_conf_tpl: my.cnf.j2
 mysql_conf_file: settings.cnf

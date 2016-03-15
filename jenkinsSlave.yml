@@ -10,4 +10,4 @@
     - dns
     - williamyeh.oracle-java
     - geerlingguy.git
-    - pcextreme.mariadb
+    - ansible-mariadb
