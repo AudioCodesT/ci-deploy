@@ -8,7 +8,7 @@
 
   roles:
     - dns
-#    - williamyeh.oracle-java
+    - williamyeh.oracle-java
     - geerlingguy.git
     - geerlingguy.repo-epel
     - pcextreme.mariadb
