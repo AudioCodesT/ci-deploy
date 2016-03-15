@@ -38,7 +38,7 @@
             state=absent
 
 - name: 'Reload privilege tables'
-  command: 'mysql -ne "{{ item }}"'
+  command: 'mysql -u root -p {{ root_db_password }} "{{ item }}"'
   with_items:
     - FLUSH PRIVILEGES
   changed_when: False
