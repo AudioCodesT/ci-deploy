@@ -1,0 +1,13 @@
+---
+- name: Installs Jenkins slave for ARM project
+  hosts: arm-jenkins-slaves
+  sudo: true
+   	
+  vars:
+    - ansible_ssh_user: centos
+
+  roles:
+    - dns
+    - williamyeh.oracle-java
+    - geerlingguy.git
+    - pcextreme.mariadb
