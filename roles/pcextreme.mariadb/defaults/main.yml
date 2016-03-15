@@ -2,6 +2,7 @@
 mariadb_version: 10.1.10
 ansible_distribution_major_version: 6
 
+mariadb_service_name: mysql
 root_db_password: root
 
 mysql_conf_tpl: my.cnf.j2
