@@ -20,10 +20,6 @@
 - name: 'enable jdbc connector for mysql'
   command: mv /tmp/{{mysql_jdbc_base}}/{{mysql_jdbc_base}}-bin.jar {{artifactory_home}}/tomcat/lib
 
-- name: 'seboolean allow_user_mysql_connect'
-  seboolean: name=allow_user_mysql_connect state=yes persistent=yes
-  ignore_errors: yes
-
 - name: 'create artifactory database in mysql'
   mysql_db: 
     name={{ artifactory_database_db }}
