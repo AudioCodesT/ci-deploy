@@ -79,4 +79,5 @@ jenkins_plugins:
   - monitoring
   - testInProgress
   - cppcheck
+  - skip-certificate-check
 jenkins_url_prefix: ""
