@@ -1,5 +1,5 @@
 ---
-dns_nameservers: ['8.8.8.8','8.8.4.4','10.1.1.11','10.1.1.10']
+dns_nameservers: ['10.1.1.11','10.1.1.10','8.8.8.8','8.8.4.4']
 dns_remove_resolvconf: true
 dns_domain: "corp.audiocodes.com"
 dns_searchs: 
