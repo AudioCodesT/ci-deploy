@@ -13,6 +13,8 @@ server {
     server_name       {{artifactory_host_name}};
 {% endif %}
     
+	# set client body size #
+	client_max_body_size {{artifactory_max_artifact_size}};
 
 if ($http_x_forwarded_proto = '') {
         set $http_x_forwarded_proto  $scheme;

@@ -23,6 +23,8 @@ artifactory_ssl_cert: /etc/ssl/certs/awsrdartifactory.cer
 artifactory_ssl_key: /etc/ssl/certs/awsrdartifactory.key
 artifactory_http_port: '8081'
 
+artifactory_max_artifact_size: '5120M'
+
 
 
 
