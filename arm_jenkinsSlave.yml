@@ -13,3 +13,4 @@
     - geerlingguy.git
     - geerlingguy.repo-epel
     - pcextreme.mariadb
+    - mysql-utils
