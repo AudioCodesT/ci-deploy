@@ -1,0 +1,4 @@
+	
+- name: "Build hosts file"
+  lineinfile: dest=/etc/hosts line="{{hosts_gerrit_ip}}" state=present
+  lineinfile: dest=/etc/hosts line="{{hosts_artifactory_ip}}" state=present
