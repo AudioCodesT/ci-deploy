@@ -81,4 +81,5 @@ jenkins_plugins:
   - cppcheck
   - conditional-buildstep
   - run-condition
+  - ec2
 jenkins_url_prefix: ""
