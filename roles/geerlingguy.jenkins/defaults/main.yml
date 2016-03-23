@@ -82,4 +82,5 @@ jenkins_plugins:
   - conditional-buildstep
   - run-condition
   - ec2
+  - jobConfigHistory
 jenkins_url_prefix: ""
