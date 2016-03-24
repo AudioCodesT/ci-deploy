@@ -10,6 +10,7 @@
 {% endif %}
 [index]
         type = LUCENE
+		defaultMaxClauseCount = 8192
 [auth]
         type = {{ gerrit_auth_type }}
 {% if gerrit_auth_type in ['LDAP', 'HTTP_LDAP'] %}
