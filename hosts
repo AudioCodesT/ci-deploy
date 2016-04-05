@@ -26,3 +26,6 @@ ipp ansible_ssh_host=172.16.133.117
 
 [sanjer-servers]
 sanjer ansible_ssh_host=172.16.145.11
+
+#[sonar-servers]
+#sonar ansible_ssh_host=172.16.145.51
