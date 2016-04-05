@@ -84,4 +84,6 @@ jenkins_plugins:
   - ec2
   - jobConfigHistory
   - jenkins-multijob-plugin
+  - sonar
+  - sonar-gerrit
 jenkins_url_prefix: ""
