@@ -59,9 +59,7 @@
   
 - name: plugins | Download and install plugins
   sudo: yes
-  get_url:
-    url="{{item.url}}"
-    dest="{{sonar_ext_dir}}"
+  get_url: url="{{item.url}}" dest="{{sonar_ext_dir}}" validate_certs="no"
   with_items: sonar_plugins
   notify: restart sonar
   when: "sonar_plugins is defined and sonar_plugins | count > 0"
