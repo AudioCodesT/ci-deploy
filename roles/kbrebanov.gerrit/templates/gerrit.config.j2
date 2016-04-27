@@ -26,6 +26,22 @@
 {% endif %}
 [sendemail]
         smtpServer = {{ gerrit_sendemail_smtp_server }}
+{% if gerrit_custom_smtp == true %}
+        smtpServerPort = {{ gerrit_smtp_port }} 							# 587
+        smtpEncryption = {{ gerrit_smtp_encryption_medhod }} 	# tls
+        smtpUser = {{ gerrit_smtp_username }} 							  # devopssmtp@audiocodes.com
+        smtpPass = {{ gerrit_smtp_password }}									# ilov3AWScloud$
+        from = USER
+        includeDiff = true 
+{% endif %}
+{% if gerrit_mail_from_addr is defined %}
+[user]
+				email = {{ gerrit_mail_from_addr }}
+{% endif %}
+{% if gerrit_web_sessions_maxage is defined %}
+[cache "web_sessions"]
+				maxAge = {{ gerrit_web_sessions_maxage }} 						# 1 year
+{% endif %}
 [container]
         user = {{ gerrit_user }}
         javaHome = {{ gerrit_container_java_home }}
