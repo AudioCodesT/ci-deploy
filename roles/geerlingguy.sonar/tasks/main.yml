@@ -1,16 +1,20 @@
 ---
-- name: Create a database for Sonar.
-  mysql_db:
-    name: "{{ sonar_mysql_database }}"
-    state: present
+- name: install MySQL-python package 
+  yum: name=MySQL-python state=present
+
+- name: Create Sonar mySQL database
+  sudo: yes
+  mysql_db: >
+    name={{ sonar_mysql_database }}
+    login_host={{sonar_mysql_host}}
+    login_password={{sonar_database_hostname_pass}}
+    login_user={{sonar_database_main_username}}
+    encoding=utf8
+    state=present
+
 
 - name: Create a sonar user.
-  mysql_user:
-    name: "{{ sonar_mysql_username }}"
-    host: "{{ item }}"
-    priv: "{{ sonar_mysql_database }}.*:ALL"
-    password: "{{ sonar_mysql_password }}"
-  with_items: sonar_mysql_allowed_hosts
+  mysql_user: name={{ sonar_mysql_username }} host={{ sonar_host_name }} login_host={{sonar_mysql_host}} password={{sonar_mysql_password}} login_user={{sonar_database_main_username}} login_password={{sonar_database_hostname_pass}} priv={{ sonar_mysql_database }}.*:ALL state=present
 
 - name: Download Sonar.
   get_url:
@@ -45,7 +49,10 @@
     - /etc/init.d/sonar
 
 - name: Ensure Sonar is running and set to start on boot.
-  service: name=sonar state=started enabled=yes
+  sudo: yes
+  #service: name=sonar state=started enabled=yes
+  shell: service sonar start
+  ignore_errors: yes
 
 - name: Make sure Sonar is responding on the configured port.
   wait_for: port=9000 delay=3 timeout=300
