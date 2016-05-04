@@ -2,10 +2,6 @@
 # tasks for activemq installation
 
 
-#- name: 'verify presence of activemq'
-#  stat: path="/opt/apache-activemq-{{ activemq_ver }}/activemq-all-{{ activemq_ver }}.jar"
-#  register: jarfile
-
 - name: 'verify presence of activemq_file'
   stat: path=/tmp/{{activemq_file}}
   register: download 
@@ -21,3 +17,5 @@
     dest: /opt
     copy: no
     creates: /usr/local/sonar/COPYING
+
+

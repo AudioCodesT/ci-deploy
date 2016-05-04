@@ -14,7 +14,7 @@
       
 #    - hosts
 #    - dns
-#    - williamyeh.oracle-java
+#     - williamyeh.oracle-java
 #    - geerlingguy.git
 #    - geerlingguy.repo-epel
 #    - common
