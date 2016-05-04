@@ -1,0 +1,16 @@
+
+
+- name: 'Configure ActiveMQ activemq.xml'
+  template: src=activemq.xml.j2
+            dest=/opt/apache-activemq-{{ activemq_ver }}/conf/activemq.xml
+#  notify:
+#    - restart activemq
+
+- name: 'create user to run artifactory'
+  user: name={{activemq_username}} 
+
+- name: 'Change the ownership of the activemq directory to the activemq user' 
+  file: dest=/opt/apache-activemq-{{ activemq_ver }} owner={{activemq_username}} group={{activemq_username}} mode=0775 recurse=yes 
+  
+#- name: Start and Enable ActiveMQ
+#  service: name=activemq state=started enabled=yes

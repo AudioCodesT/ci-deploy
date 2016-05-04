@@ -1,0 +1,66 @@
+---
+- name: "Debug information"
+  debug: msg="{{ inventory_hostname }} Tomcat home directory at {{ tomcat.home_dir }}"
+  tags: tomcat
+
+- name: "Download Tomcat from audiocodes-artifacts s3 bucket"
+  get_url: url={{ tomcat.s3_base_url }}/apache-tomcat-{{ tomcat.version }}.{{ tomcat.suffix }} dest="{{ ac.runtime_dir }}/tools/apache-tomcat-{{ tomcat.version }}.tar.gz"
+  sudo: yes
+  tags: tomcat
+
+- name: "Extract Tomcat"
+  command: chdir={{ ac.runtime_dir }} /bin/tar xvf {{ ac.runtime_dir }}/tools/apache-tomcat-{{ tomcat.version }}.tar.gz -C {{ ac.runtime_dir }} creates={{ ac.runtime_dir }}/apache-tomcat-{{ tomcat.version }}
+  sudo: yes
+  tags: tomcat
+
+- name: "Symlink Tomcat install directory"
+  file: src={{ ac.runtime_dir }}/apache-tomcat-{{ tomcat.version }} path={{ ac.runtime_dir }}/tomcat state=link owner={{ ac.user }} group={{ ac.user }}
+  sudo: yes
+  tags: tomcat
+
+- name: "Stat current webapp"
+  sudo: yes
+  stat: path={{ tomcat.webapps_dir }}/ROOT.war
+  notify: stop tomcat
+  register: current_webapp_stat
+  tags: tomcat
+
+- name: "Remove old webapp file"
+  sudo: yes
+  file: path="{{ tomcat.webapps_dir }}/ROOT.war" state=absent
+  when: current_webapp_stat.stat.exists
+  tags: [deploy-war]
+
+- name: "Remove old webapp dir"
+  sudo: yes
+  file: path="{{ tomcat.webapps_dir }}/ROOT" state=absent
+  when: current_webapp_stat.stat.exists
+  tags: [deploy-war]
+
+
+- name: "Generate init script"
+  sudo: yes
+  template: src=tomcat dest=/etc/init.d/tomcat mode=0755
+  tags: tomcat
+
+- name: "Register Tomcat Service"
+  sudo: yes
+  service: name=tomcat state=started enabled=yes
+  tags: tomcat
+
+- name: "Validate permissions in ac.home" 
+  file: path={{ ac.runtime_dir }} recurse=yes state=directory mode="u=rwx,g=rx,o=r" owner={{ ac.user }} group={{ ac.group }}
+  sudo: yes
+  tags: tomcat
+
+#- name: "Copy new webapp"
+#  sudo: yes
+#  copy: src="{{ ac.runtime_dir }}/tools/ARMLicense.war" dest="{{ tomcat.webapps_dir }}/ROOT.war" owner={{ ac.user }} group={{ ac.user }}
+#  notify: restart tomcat
+#  tags: [deploy-war]
+
+- name: "Download ARMLicense.war from audiocodes-artifacts s3 bucket"
+  get_url: url={{ tomcat.s3_base_url }}/ARMLicense.war dest="{{ tomcat.webapps_dir }}/ROOT.war"
+  sudo: yes
+  notify: restart tomcat
+  tags: [deploy-war]

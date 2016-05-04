@@ -1,0 +1,34 @@
+---
+workspace: /root
+
+sonar_major: "4.5"
+sonar_minor: "6"
+sonar_version: "{{sonar_major}}.{{sonar_minor}}"
+
+# Default to the latest LTS release.
+sonar_download_url: https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-{{sonar_major}}.{{sonar_minor}}.zip
+sonar_version_directory: sonarqube-{{sonar_version}}
+
+sonar_host_name: '172.16.145.11'
+
+# MySQL database connection details.
+sonar_mysql_username: sonar
+sonar_mysql_password: sonar
+
+sonar_name: "sonar-{{sonar_version}}"
+sonar_base_dir: "/usr/local/sonar"
+sonar_port: 9000
+sonar_home_dir: "{{sonar_base_dir}}"
+sonar_ext_dir: "{{sonar_home_dir}}/extensions/plugins/"
+
+sonar_mysql_host: 'rdci.c1tyrsglic7l.eu-central-1.rds.amazonaws.com'
+sonar_mysql_port: "3306"
+sonar_mysql_database: sonar
+sonar_database_hostname_pass: '1TTqYAHtdT'
+sonar_database_main_username: root
+
+## Sonar plugins
+
+sonar_plugins:
+    - name  : "cxx plugin"
+      url   : "https://artifactory/plugins-release-local/org/codehaus/sonar-plugins/cxx/sonar-cxx-plugin/0.9.5/sonar-cxx-plugin-0.9.5.jar"

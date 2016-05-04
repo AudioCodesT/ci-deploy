@@ -6,11 +6,12 @@
 # localhost needs to be the last item for idempotency, see
 # http://ansible.cc/docs/modules.html#mysql-user
 - name: 'Update Mysql Root Password'
-  mysql_user: name=root
-              host={{ item }}
+  mysql_user: login_user=root
+              login_password={{ arm_mysql_master_pass }}
+              name=root
               password={{ root_db_password }}
               priv=*.*:ALL,GRANT
-              state=present
+              host={{ item }}
   with_items:
     - 127.0.0.1
     - ::1

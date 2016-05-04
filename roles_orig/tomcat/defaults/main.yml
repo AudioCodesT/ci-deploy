@@ -1,0 +1,24 @@
+---
+
+#
+# variables needed to be defined in user's playbook
+#
+binary_name: 'https://s3.eu-central-1.amazonaws.com/audiocodes-artifacts/ARMLicense.war'
+
+ac:
+  runtime_dir: '/opt/ac'
+  user: 'ac'
+  group: 'ac'
+  home: '/home/audiocodes'
+  artifactory_url: 'http://172.16.143.119:8081/artifactory/webapp/'
+tomcat:
+  version: '8.0.21'
+  suffix: 'tar.gz'
+  home_dir: '/opt/ac/tomcat/'
+  webapps_dir: '/opt/ac/tomcat/webapps' 
+  listen_port: '8080'
+  s3_base_url: 'https://s3.eu-central-1.amazonaws.com/audiocodes-artifacts'
+  download_base_url: "{{ ac.artifactory_url }}/#/artifacts/browse/tree/General/ext-release-local/org/apache/apache-tomcat"
+  download_url: "{{ tomcat.download_base_url }}/{{ tomcat.version }}/apache-tomcat-{{ tomcat.version }}.{{ tomcat.suffix }}" 
+  #artifact_name: 'apache-tomcat-8.0.21.tar.gz'
+

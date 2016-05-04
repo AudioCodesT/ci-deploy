@@ -1,8 +1,0 @@
----
-- name: Installs Gerrit Code Review
-  hosts: gerrit-ubuntu-servers
-  sudo: true
- 
-  roles:
-    - kbrebanov.java
-  tasks:

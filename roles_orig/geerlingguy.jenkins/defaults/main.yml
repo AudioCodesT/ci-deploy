@@ -1,0 +1,89 @@
+---
+jenkins_connection_delay: 5
+jenkins_connection_retries: 60
+jenkins_hostname: jenkins
+jenkins_http_port: 8080
+jenkins_https_port: 443
+jenkins_ssl_cert: /etc/ssl/certs/awsrdjenkins.cer
+jenkins_ssl_key: /etc/ssl/certs/awsrdjenkins.key
+jenkins_proxy_port: 80
+jenkins_jar_location: /opt/jenkins-cli.jar
+jenkins_proxy_auth: false
+jenkins_logdir: /var/log/jenkins            # Jenkins logs location
+jenkins_plugins:
+  - parameterized-trigger
+  - matrix-project
+  - cvs
+  - token-macro
+  - envinject
+  - matrix-auth
+  - windows-slaves
+  - scm-api
+  - ssh-slaves
+  - translation
+  - build-name-setter
+  - javadoc
+  - antisamy-markup-formatter
+  - cobertura
+  - pam-auth
+  - artifactory
+  - mapdb-api
+  - subversion
+  - m2release
+  - mailer
+  - gerrit-trigger
+  - git
+  - credentials
+  - script-security
+  - ssh-credentials
+  - thinBackup
+  - maven-plugin
+  - ant
+  - ldap
+  - build-blocker-plugin
+  - junit
+  - git-client
+  - external-monitor-job
+  - publish-over-cifs
+  - ace-editor
+  - active-directory 
+  - analysis-collector 
+  - analysis-core
+  - build-user-vars-plugin
+  - build-with-parameters
+  - compatibility-action-storage
+  - durable-task
+  - email-ext
+  - gerrit
+  - git-parameter
+  - git-server
+  - groovy-postbuild
+  - htmlpublisher
+  - jquery-detached
+  - jquery
+  - nodelabelparameter
+  - postbuildscript
+  - rebuild
+  - scoring-load-balancer
+  - ssh-agent
+  - startup-trigger-plugin
+  - warnings
+  - workflow-api
+  - workflow-cps
+  - workflow-scm-step
+  - workflow-step-api
+  - workflow-support
+  - xshell
+  - greenballs
+  - docker-plugin
+  - monitoring
+  - testInProgress
+  - cppcheck
+  - conditional-buildstep
+  - run-condition
+  - ec2
+  - jobConfigHistory
+  - jenkins-multijob-plugin
+  - sonar
+  - sonar-gerrit
+jenkins_url_prefix: ""

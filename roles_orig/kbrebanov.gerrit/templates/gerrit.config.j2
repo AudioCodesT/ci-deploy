@@ -1,0 +1,65 @@
+[gerrit]
+        basePath = git
+        canonicalWebUrl = {{ gerrit_canonical_web_url }}
+[database]
+        type = {{ gerrit_database_type }}
+        database = {{ gerrit_database_db }}
+{% if gerrit_database_type == 'mysql' %}
+        hostname = {{ gerrit_database_hostname }}
+        username = {{ gerrit_database_username }}
+{% endif %}
+[index]
+        type = LUCENE
+		defaultMaxClauseCount = 8192
+[auth]
+        type = {{ gerrit_auth_type }}
+{% if gerrit_auth_type in ['LDAP', 'HTTP_LDAP'] %}
+[ldap]
+        server = {{ gerrit_ldap_server }}
+{% if gerrit_ldap_username is defined %}
+        username = {{ gerrit_ldap_username }}
+	password = {{ gerrit_ldap_password }}
+{% endif %}
+        accountBase = {{ gerrit_ldap_account_base }}
+        groupBase = {{ gerrit_ldap_group_base }}
+        accountEmailAddress = ${mail.toLowerCase}
+{% endif %}
+[sendemail]
+        smtpServer = {{ gerrit_sendemail_smtp_server }}
+{% if gerrit_custom_smtp == true %}
+        smtpServerPort = {{ gerrit_smtp_port }} 							# 587
+        smtpEncryption = {{ gerrit_smtp_encryption_medhod }} 	# tls
+        smtpUser = {{ gerrit_smtp_username }} 							  # devopssmtp@audiocodes.com
+        smtpPass = {{ gerrit_smtp_password }}									# ilov3AWScloud$
+        from = USER
+        includeDiff = true 
+{% endif %}
+{% if gerrit_mail_from_addr is defined %}
+[user]
+				email = {{ gerrit_mail_from_addr }}
+{% endif %}
+{% if gerrit_web_sessions_maxage is defined %}
+[cache "web_sessions"]
+				maxAge = {{ gerrit_web_sessions_maxage }} 						# 1 year
+{% endif %}
+[container]
+        user = {{ gerrit_user }}
+        javaHome = {{ gerrit_container_java_home }}
+[sshd]
+        listenAddress = {{ gerrit_sshd_listen_address }}
+[httpd]
+        listenUrl = {{ gerrit_httpd_listen_url }}
+[cache]
+        directory = cache
+[gitweb]
+  type = custom
+  url = plugins/
+  linkname = gitblit
+  project = gitblit/summary/?r=${project}
+  revision = gitblit/commit/?r=${project}&h=${commit}
+  branch = gitblit/log/?r=${project}&h=${branch}
+  filehistory = gitblit/history/?f=${file}&r=${project}&h=${branch}
+  file = gitblit/blob/?r=${project}&h=${commit}&f=${file}
+  roottree = gitblit/tree/?r=${project}&h=${commit}
+[plugins]
+        allowRemoteAdmin = {{ gerrit_plugins_allow_remote_admin }}

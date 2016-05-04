@@ -26,10 +26,14 @@
   file: path="{{ ac.runtime_dir }}/conf/" recurse=yes state=directory mode=755 owner={{ ac.user }} group={{ac.group }}
   sudo: yes
 
-- name: "Install vim"
+- name: "Install packadges we want on all hosts"
   yum: name={{ item }} state=latest
   with_items:
     - bash-completion
     - vim
+    - python-boto
+    - bash-completion
   sudo: yes
-
+  when: ansible_os_family == "RedHat" and ansible_distribution_version != '6.7'
+# mysql my.cnf
+  #become_user: "{{ ansible_ssh_user }}"

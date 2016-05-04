@@ -1,0 +1,32 @@
+---
+# Select one or the other
+#artifactory_database: postgresql
+
+artifactory_host_ip: '172.16.143.119'
+artifactory_database: 'mysql'
+artifactory_database_db: 'artdb'
+artifactory_database_hostname: 'rdci.c1tyrsglic7l.eu-central-1.rds.amazonaws.com'
+artifactory_database_hostname_pass: '1TTqYAHtdT'
+artifactory_database_main_username: 'root'
+artifactory_database_encoding: utf8
+
+# defaults file for bbaassssiiee.artifactory
+#artifactory_version: "3.4.2"
+artifactory_version: "4.4.0"
+artifactory_username: "artifactory"
+artifactory_password: "password"
+
+artifactory_proxy_port: '80'
+artifactory_host_name: 'artifactory'
+artifactory_https_port: '443'
+artifactory_ssl_cert: /etc/ssl/certs/awsrdartifactory.cer
+artifactory_ssl_key: /etc/ssl/certs/awsrdartifactory.key
+artifactory_http_port: '8081'
+
+artifactory_max_artifact_size: '5120M'
+
+
+
+
+
+

@@ -1,0 +1,38 @@
+- name: "Disable selinux"
+  selinux: state=disabled
+  sudo: yes
+
+- name: "Add AudioCodes group"
+  group: name={{ ac.group }}
+  sudo: yes
+
+- name: "Add AudioCodes user"
+  user: name={{ ac.user }} group={{ ac.group }} home={{ ac.home_dir }}
+  sudo: yes
+
+- name: "Debug information"
+  debug:
+    msg="Create AudioCodes runtime direcory (/opt/ac, /opt/ac/conf, /opt/ac/tools)"
+
+- name: "Configure AudioCodes as sudoer"
+  template: src=ac dest=/etc/sudoers.d/ac mode=0644 owner=root group=root
+  sudo: yes
+
+- name: "Create AudioCodes runtime directory"
+  file: path="{{ ac.runtime_dir }}/tools/" recurse=yes state=directory mode=755 owner={{ ac.user }} group={{ ac.group }}
+  sudo: yes
+
+- name: "Create AudioCodes config directory"
+  file: path="{{ ac.runtime_dir }}/conf/" recurse=yes state=directory mode=755 owner={{ ac.user }} group={{ac.group }}
+  sudo: yes
+
+- name: "Install packadges we want on all hosts"
+  yum: name={{ item }} state=latest
+  with_items:
+    - bash-completion
+    - vim
+    - python-boto
+    - bash-completion
+  sudo: yes
+  when: ansible_os_family == "RedHat"
+

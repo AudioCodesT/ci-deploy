@@ -1,0 +1,12 @@
+ec2_keypair: "Jenkins & App subnets machines key pair"
+ec2_security_group: ['sg-12bbe37b','sg-77bce41e']
+ec2_instance_type: "m4.large"
+ec2_image: "ami-f4f5ed98"
+ec2_subnet_ids: ['subnet-6d285b04']
+ec2_region: "eu-central-1"
+ec2_tag_Name: "test-Gerrit"
+ec2_tag_Type: "Gerrit for test"
+ec2_tag_Environment: "test"
+ec2_volume_size: 100
+num_of_instances: 1
+ec2_Vendor_Name: "Tikal"

@@ -1,0 +1,4 @@
+#    when: docker_daemon == true
+-   name: Remove Dokcer
+    yum: name=docker state=absent
+    tags: docker-remove

@@ -10,4 +10,4 @@
     - dns
     - kbrebanov.git
     - geerlingguy.jenkins
-    - andrewrothstein.docker
+    - { role: docker, docker_remove: true, }

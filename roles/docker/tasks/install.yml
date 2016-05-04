@@ -1,0 +1,32 @@
+
+-   name: "Disable selinux"
+    selinux: state=disabled
+    sudo: yes
+
+-   name: Install python setup tools
+    yum: name=python-setuptools
+    tags: docker
+
+-   name: Install Pypi
+    easy_install: name=pip
+    tags: docker
+
+-   name: Install docker-py
+    pip: name=docker-py
+    tags: docker
+
+- template: 
+    src: "docker.repo.j2" 
+    dest: "/etc/yum.repos.d/docker.repo" 
+    owner: root 
+    group: root 
+    mode: 0644
+
+-   name: Install Docker
+    yum: name=docker state=latest
+    tags: docker
+
+-   name: Make sure Docker is running
+    service: name=docker state=running
+    tags: docker
+#    when: docker_daemon == true

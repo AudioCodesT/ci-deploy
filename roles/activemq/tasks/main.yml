@@ -1,0 +1,7 @@
+---
+
+# Download & install
+- include: install.yml
+
+# Configure activemq
+- include: configure.yml

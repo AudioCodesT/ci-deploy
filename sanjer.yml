@@ -13,6 +13,6 @@
     - common
     - williamyeh.oracle-java
     - tomcat
-	- sonar
+	  - geerlingguy.sonar
   
   tasks:

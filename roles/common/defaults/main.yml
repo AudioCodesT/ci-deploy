@@ -10,6 +10,6 @@ ac:
   java_minor_version: "45"
   java_version: "1.8.0_45"
   tomcat_version: "8.0.21"
-  domain_name: "clausematch.com"
+  domain_name: "audiocodes.com"
 tomcat:
   version: "8.0.21"
