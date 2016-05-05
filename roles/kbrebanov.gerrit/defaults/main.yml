@@ -2,7 +2,7 @@
 # defaults file for gerrit
 
 #gerrit_download_server: https://gerrit-releases.storage.googleapis.com
-gerrit_download_server: http://artifactory:8081/artifactory/libs-release-local/com/google/gerrit/gerrit-war/2.12_patched
+gerrit_download_server: https://artifactory/libs-release-local/com/google/gerrit/gerrit-war/2.12_patched
 gerrit_download_maven: false
 #gerrit_version: 2.12
 gerrit_version: war-2.12_patched
@@ -42,11 +42,11 @@ gerrit_account_email_address: ${mail.toLowerCase}
 gerrit_plugins_allow_remote_admin: true
 
 gerrit_plugins:
-  - url: http://artifactory:8081/artifactory/plugins-release-local/com/audiocodes/gwapp/plugins/acGerrit/ac-gerrit/2.12-47-g507bab9
+  - url: https://artifactory/plugins-release-local/com/audiocodes/gwapp/plugins/acGerrit/ac-gerrit/2.12-47-g507bab9
     name: ac-gerrit-2.12-47-g507bab9.jar
-  - url: http://artifactory:8081/artifactory/plugins-release-local/com/googlesource/gerrit/plugins/download/download-commands/2.12-1-g2a0e5ac
+  - url: https://artifactory/plugins-release-local/com/googlesource/gerrit/plugins/download/download-commands/2.12-1-g2a0e5ac
     name: download-commands-2.12-1-g2a0e5ac.jar
-  - url: http://artifactory:8081/artifactory/plugins-release-local/com/googlesource/gerrit/plugins/gitblit/gitblit/2.12.162.1
+  - url: https://artifactory/plugins-release-local/com/googlesource/gerrit/plugins/gitblit/gitblit/2.12.162.1
     name: gitblit-2.12.162.1.jar
-  - url: http://artifactory:8081/artifactory/plugins-release-local/com/googlesource/gerrit/plugins/reviewnotes/reviewnotes/2.12
+  - url: https://artifactory/plugins-release-local/com/googlesource/gerrit/plugins/reviewnotes/reviewnotes/2.12
     name: reviewnotes-2.12.jar

@@ -33,6 +33,7 @@
     url={{ gerrit_download_server }}/gerrit-{{ gerrit_version }}.war
     dest=/opt/gerrit/gerrit-{{ gerrit_version }}.war
     sha256sum={{ gerrit_sha256sum }}
+    validate_certs=no
   when: not gerrit_download_maven
   tags: gerrit
 
@@ -41,6 +42,7 @@
     url={{ gerrit_download_server }}/com/google/gerrit/gerrit-war/{{ gerrit_version }}/gerrit-war-{{ gerrit_version }}.war
     dest=/opt/gerrit/gerrit-{{ gerrit_version }}.war
     sha256sum={{ gerrit_sha256sum }}
+    validate_certs=no
   when: gerrit_download_maven
   tags: gerrit
 
@@ -178,6 +180,7 @@
   get_url:
     url: "{{ item.url }}/{{ item.name }}"
     dest: "{{ gerrit_site_dir }}/plugins/{{ item.name }}"
+    validate_certs: "no"
   notify: restart gerrit
   with_items: gerrit_plugins
   tags: install_plugins
