@@ -13,11 +13,11 @@
 #    - f500.dumpall
       
 #    - hosts
-#    - dns
-#     - williamyeh.oracle-java
-#    - geerlingguy.git
-#    - geerlingguy.repo-epel
-#    - common
-#    - pcextreme.mariadb
+     - dns
+     - williamyeh.oracle-java
+     - geerlingguy.git
+     - geerlingguy.repo-epel
+     - common
+     - pcextreme.mariadb
      - activemq    
-#    - mysql-utils
+     - mysql-utils
