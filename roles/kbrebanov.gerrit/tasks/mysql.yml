@@ -24,7 +24,7 @@
 - name: Create Gerrit mySQL database user
   mysql_user:
     name={{gerrit_database_username}}
-    host={{gerrit_host_name}}
+    host={{gerrit_host_name_in_mysql}}
     login_host={{gerrit_database_hostname}}
     password={{gerrit_database_password}}
     login_user={{gerrit_database_main_username}}

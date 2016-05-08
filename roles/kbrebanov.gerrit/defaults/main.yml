@@ -14,6 +14,7 @@ gerrit_auth_type: 'LDAP'
 gerrit_canonical_web_url: 'https://gerrit/'
 gerrit_container_java_home: /usr/lib/jvm/java-7-oracle
 gerrit_host_name: 'gerrit'
+gerrit_host_name_in_mysql: '172.16.133.%'
 gerrit_database_type: 'mysql'
 gerrit_database_db: 'reviewdb'
 gerrit_database_username: 'gerrit2'

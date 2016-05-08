@@ -170,7 +170,7 @@
   tags: gerrit
 
 # Configure Gerrit reverse proxy via nginx
-- include: nginx.yml
+#- include: nginx.yml
 
 - name: Ensure Gerrit service is started and enabled on boot
   service: name={{ gerrit_service_name }} state=started enabled=yes

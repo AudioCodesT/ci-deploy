@@ -117,8 +117,8 @@ galaxy_info:
   #- system
   #- web
 dependencies:
-#  - { role: kbrebanov.java }
-#  - { role: kbrebanov.git }
+  - { role: kbrebanov.java }
+  - { role: kbrebanov.git }
   #- { role: kbrebanov.mysql, when: install_mysql is defined and install_mysql }
   # List your role dependencies here, one per line. Only
   # dependencies available via galaxy should be listed here.
