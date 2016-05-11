@@ -21,7 +21,7 @@ gerrit_database_username: 'gerrit2'
 gerrit_database_password: 'gerrit2'
 gerrit_database_hostname: 'rdci.c1tyrsglic7l.eu-central-1.rds.amazonaws.com'
 gerrit_database_hostname_pass: '1TTqYAHtdT'
-gerrit_database_main_username: root
+gerrit_database_main_username: 'root'
 gerrit_httpd_listen_url: 'proxy-https://*:8080/'
 gerrit_sendemail_smtp_server: 'localhost'
 gerrit_sshd_listen_address: '*:29418'

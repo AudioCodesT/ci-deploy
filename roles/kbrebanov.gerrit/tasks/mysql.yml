@@ -34,3 +34,25 @@
   tags:
     - gerrit
     - mysql
+
+- name: Copy dump for tests
+  copy:
+    src=db/{{ gerrit_dump_file }}
+    dest=/tmp
+  when: gerrit_test_env is defined and gerrit_test_env == "true" and gerrit_dump_file is defined
+  tags:
+    - gerrit
+    - mysql
+  
+- name: Import Gerrit mySQL database for tests
+  mysql_db:
+    name={{gerrit_database_db}}
+    login_host={{gerrit_database_hostname}}
+    login_user={{gerrit_database_main_username}}
+    login_password={{gerrit_database_hostname_pass}}
+    target=/tmp/{{ gerrit_dump_file }}
+    state=import
+  when: gerrit_test_env is defined and gerrit_test_env == "true"
+  tags:
+    - gerrit
+    - mysql

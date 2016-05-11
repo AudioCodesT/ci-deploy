@@ -17,5 +17,7 @@
 
   roles:
     - dns
+    - kbrebanov.java
+    - kbrebanov.git
     - kbrebanov.gerrit
   tasks:
