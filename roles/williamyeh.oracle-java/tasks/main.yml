@@ -63,7 +63,11 @@
   alternatives: name=java_sdk link=/usr/lib/jvm/java  path=/usr/java/default
   when: filecheck.stat.exists
 
-
+- name: remove old java if needed
+  action: yum pkg={{ java_old_version }} state=removed
+  when: remove_old_java_version is defined and remove_old_java_version == "true" and java_old_version is defined
+  tags:
+    - remove_old_java
 
 - name: remove temporary downloaded files, if requested
   file: path={{ item }} state=absent
