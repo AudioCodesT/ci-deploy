@@ -27,3 +27,4 @@
      - pcextreme.mariadb
      - activemq    
      - mysql-utils
+     - js-tools

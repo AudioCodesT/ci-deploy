@@ -173,6 +173,31 @@
 - include: nginx.yml
   when: gerrit_test_env is not defined 
 
+- name: Copy initial git repos
+  action: copy src={{ item }} dest=/tmp owner=gerrit group=gerrit
+  with_items:
+    - initGitRepos/All-Projects.tar.gz
+    - initGitRepos/All-Users.tar.gz
+  when: gerrit_test_env is defined and gerrit_test_env == "true" and gerrit_dump_file is defined
+  tags:
+    - gerrit
+    - init_gerrit
+
+- name: Extract All-Projects.tar.gz into Gerrit git folder
+  unarchive: src=/tmp/All-Projects.tar.gz dest=/var/gerrit/git copy=no
+  when: gerrit_test_env is defined and gerrit_test_env == "true" and gerrit_dump_file is defined
+  tags:
+    - gerrit
+    - init_gerrit
+
+- name: Extract All-Users.tar.gz into Gerrit git folder
+  unarchive: src=/tmp/All-Users.tar.gz dest=/var/gerrit/git copy=no
+  when: gerrit_test_env is defined and gerrit_test_env == "true" and gerrit_dump_file is defined
+  tags:
+    - gerrit
+    - init_gerrit
+
+
 - name: Ensure Gerrit service is started and enabled on boot
   service: name={{ gerrit_service_name }} state=started enabled=yes
   tags: gerrit

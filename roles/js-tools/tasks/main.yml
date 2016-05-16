@@ -1,0 +1,10 @@
+---
+# tasks file for js-tools
+- name: Install Node.JS
+  yum: pkg=npm state=installed
+
+- name: Install Bower and Grunt
+  npm: name={{ item }} state=present global=yes
+  with_items:
+    - bower
+    - grunt-cli
