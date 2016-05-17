@@ -4,6 +4,9 @@
   sudo: true
  
   vars:
+    
+    #update_timezone: false
+    ansible_ssh_user: ubuntu
     # custom smtp configuration
     gerrit_custom_smtp: true
     gerrit_sendemail_smtp_server: 'smtp.office365.com'
@@ -17,6 +20,7 @@
 
   roles:
     - dns
+    - timezone
     - kbrebanov.java
     - kbrebanov.git
     - kbrebanov.gerrit

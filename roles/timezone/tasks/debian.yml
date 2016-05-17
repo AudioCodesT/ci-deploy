@@ -1,0 +1,19 @@
+---
+- name: "Generate /etc/localtime"
+  copy: 
+    src: /usr/share/zoneinfo/{{ timezone }} 
+    dest: /etc/localtime 
+    owner: root
+    group: root 
+    mode: 0644 
+    backup: yes 
+    force: yes
+  when: update_timezone == true
+
+- name: "Generate /etc/timezone"
+  template: 
+    src: timezone.j2 
+    dest: /etc/timezone
+  notify: tzdata reload
+  when: update_timezone == true
+

@@ -1,0 +1,11 @@
+---
+workspace: /tmp
+
+sputnik_version: 1.6.1
+
+sputnik_base_dir: /home/centos/sputnik
+sputnik_owner: centos
+sputnik_group: centos
+
+sputnik_download_url: https://artifactory/ext-release-local/pl/touk/sputnik/sputnik-{{ sputnik_version }}.zip
+sputnik_version_directory: sputnik-{{ sputnik_version }}

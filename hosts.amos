@@ -5,8 +5,8 @@ localhost ansible_connection=local
 jenkins ansible_ssh_host=172.16.146.146
 
 [arm-jenkins-slaves]
-#arm-jenkins-slave ansible_ssh_host=172.16.142.205
-arm-jenkins-slave ansible_ssh_host=172.16.142.159
+arm-jenkins-slave ansible_ssh_host=172.16.142.205
+#arm-jenkins-slave ansible_ssh_host=172.16.142.159
 
 [jenkins-slaves]
 jenkins-slave ansible_ssh_host=172.16.142.165

@@ -1,0 +1,4 @@
+---
+# defaults file for timezone
+update_timezone: true # in order to be able to say on host level update_timezone: false ...
+timezone: 'UTC'

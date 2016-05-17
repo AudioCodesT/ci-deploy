@@ -8,6 +8,8 @@
 
   roles:
     - dns
+    #- ntp
+    - timezone
     - kbrebanov.git
     - geerlingguy.jenkins
     - { role: docker, docker_remove: true, }

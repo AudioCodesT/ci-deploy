@@ -1,0 +1,61 @@
+---
+
+
+- name: Download Sputnik
+  get_url:
+    url: "{{ sputnik_download_url }}"
+    dest: "{{ workspace }}/{{ sputnik_version_directory }}.zip"
+    validate_certs: no
+  tags:
+    - sputnik
+
+- name: install unzip package 
+  yum:
+    name: unzip
+    state: present
+  tags:
+    - sputnik
+
+- name: Ensures home/centos/sputnik dir exists
+  file:
+    path: /home/centos/sputnik
+    state: directory
+  tags:
+    - sputnik
+
+- name: Unzip Sputnik to sputnik base dir
+  unarchive:
+    src: "{{ workspace }}/{{ sputnik_version_directory }}.zip"
+    dest: "{{ sputnik_base_dir }}"
+    owner: "{{ sputnik_owner }}"
+    group: "{{ sputnik_group }}"
+    copy: no
+  tags:
+    - sputnik
+
+- name: Add gerrit.properties
+  template: 
+    src: "gerrit.properties.j2"
+    dest: "{{ sputnik_base_dir }}/{{ sputnik_version_directory }}/gerrit.properties"
+    owner: "{{ sputnik_owner }}"
+    group: "{{ sputnik_group }}"
+  tags:
+    - sputnik
+
+- name: Ensures pmd folder exist inside sputnik installation
+  file:
+    path: "{{ sputnik_base_dir }}/{{ sputnik_version_directory }}/pmd"
+    state: directory
+    owner: "{{ sputnik_owner }}"
+    group: "{{ sputnik_group }}"
+  tags:
+    - sputnik
+
+- name: Copy PMD configuration file
+  copy:
+    src: "pmd/basic.xml"
+    dest: "{{ sputnik_base_dir }}/{{ sputnik_version_directory }}/pmd"
+    owner: "{{ sputnik_owner }}"
+    group: "{{ sputnik_group }}"
+  tags:
+    - sputnik
