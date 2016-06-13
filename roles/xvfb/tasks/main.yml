@@ -1,0 +1,22 @@
+---
+# tasks file for armBuildDeps
+# yum: name={{ item }} state=absent
+
+- name: Install Xvfb
+  yum: name=xorg-x11-server-Xvfb state=present
+- name: Install gnome-terminal  -> dont ask why it's so ugly
+  yum: name=gnome-terminal state=present
+
+- name: Copy Xvfb init.d script
+  template: owner=root group=root mode=0755 src=xvfb-init.d.j2 dest=/etc/init.d/xvfb
+
+#- name: Xvfb init.d script - ensure script is executable
+#  command: chmod +x /etc/init.d/xvfb
+#  become: yes
+- shell: command='service xvfb start'
+  become: yes
+
+- name: Ensure Xvfb is started
+  service: name=xvfb state=started
+  become: yes
+
