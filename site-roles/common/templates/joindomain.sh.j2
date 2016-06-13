@@ -1,0 +1,4 @@
+#!/bin/bash
+
+#echo -e "server aclads01.corp.audiocodes.com \n zone .corp.audiocodes.com \n update add console.corp.audiocodes.com 600 A 172.16.145.51 \n send" | nsupdate
+echo -e "server aclads01.{{ ac_domain_name_suffix }}\n zone {{ ac_domain_name_suffix }} \n update add {{ inventory_hostname }}.{{ ac_domain_name_suffix }} 600 A {{ ansible_default_ipv4.address }} \n send" | nsupdate"
