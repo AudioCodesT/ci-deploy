@@ -1,1 +1,4 @@
 .idea
+setenv.sh
+bin/setenv.sh
+*.retry
