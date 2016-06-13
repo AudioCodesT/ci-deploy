@@ -2,3 +2,4 @@
 setenv.sh
 bin/setenv.sh
 *.retry
+./log/ansible.log
