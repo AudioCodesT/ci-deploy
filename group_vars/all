@@ -1,7 +1,0 @@
-#file: group_vars/jenkins-servers
-docker_daemon: false
-ansible_ssh_user: centos
-rds_mysql_master_pass: '1TTqYAHtdT'
-rds_mysql_master_user: root
-arm_mysql_master_pass: root
-arm_mysql_master_user: root

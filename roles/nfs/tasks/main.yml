@@ -23,7 +23,7 @@
   with_items: "{{ nfs_exports }}"
   notify: restart nfs
 
-- file: path=/exports/toolchain state=directory mode=0774
+- file: path=/exports/toolchain state=directory mode=0777
 
 - name: Copy exports file.
   template:
