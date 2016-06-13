@@ -1,0 +1,6 @@
+---
+
+activemq_ver: "5.11.1"
+activemq_url: "http://archive.apache.org/dist/activemq/{{ activemq_ver }}/apache-activemq-{{ activemq_ver }}-bin.tar.gz"
+activemq_file: "apache-activemq-{{ activemq_ver }}-bin.tar.gz"
+activemq_username: "activemq"

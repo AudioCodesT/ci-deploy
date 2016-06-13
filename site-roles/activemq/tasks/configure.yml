@@ -1,0 +1,33 @@
+
+
+- name : Create a symbolic link to the version specific folder
+  file: src=/opt/apache-activemq-{{ activemq_ver }}/ dest=/opt/activemq state=link
+
+- name: Replacing ACTIVEMQ_HOME default var in activemq file
+  replace: dest=/opt/apache-activemq-{{ activemq_ver }}/bin/linux-x86-64/activemq regexp="ACTIVEMQ_HOME=\"../..\"" replace="ACTIVEMQ_HOME=\"/opt/activemq\""
+
+- name: Replacing set.default.ACTIVEMQ_HOME default var in wrapper.conf file
+  replace: dest=/opt/apache-activemq-{{ activemq_ver }}/bin/linux-x86-64/wrapper.conf regexp="set.default.ACTIVEMQ_HOME=../.." replace="set.default.ACTIVEMQ_HOME=/opt/activemq"
+
+- name: Replacing set.default.ACTIVEMQ_BASE default var in wrapper.conf file
+  replace: dest=/opt/apache-activemq-{{ activemq_ver }}/bin/linux-x86-64/wrapper.conf regexp="set.default.ACTIVEMQ_BASE=../.." replace="set.default.ACTIVEMQ_BASE=/opt/activemq"
+
+- name: 'Configure ActiveMQ activemq.xml'
+  template: src=activemq.xml.j2
+            dest=/opt/apache-activemq-{{ activemq_ver }}/conf/activemq.xml
+
+- name: 'Add arm_activemq.jks'
+  copy: src=arm_activemq.jks
+        dest=/opt/apache-activemq-{{ activemq_ver }}/conf/arm_activemq.jks
+
+- name: 'create user to run artifactory'
+  user: name={{activemq_username}} 
+
+- name: 'Change the ownership of the activemq directory to the activemq user' 
+  file: dest=/opt/apache-activemq-{{ activemq_ver }} owner={{activemq_username}} group={{activemq_username}} mode=0775 recurse=yes 
+
+- name : Create a symbolic link to the activemq executable script
+  file: src=/opt/apache-activemq-{{ activemq_ver }}/bin/linux-x86-64/activemq dest=/etc/init.d/activemq state=link
+
+- name: Start and Enable ActiveMQ
+  service: name=activemq state=started enabled=yes
