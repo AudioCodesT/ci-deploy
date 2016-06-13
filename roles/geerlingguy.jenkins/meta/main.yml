@@ -1,7 +1,5 @@
 ---
 dependencies:
-  - { role: geerlingguy.java }
-  - { role: geerlingguy.repo-epel } 
 
 galaxy_info:
   author: geerlingguy
