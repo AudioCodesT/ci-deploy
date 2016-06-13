@@ -1,0 +1,39 @@
+[console]
+localhost ansible_connection=local
+
+[jenkins-servers]
+jenkins ansible_ssh_host=172.16.146.146
+
+[arm-jenkins-slaves]
+arm-jenkins-slave ansible_ssh_host=172.16.142.205
+#arm-jenkins-slave ansible_ssh_host=172.16.142.159
+
+[jenkins-slaves]
+jenkins-slave ansible_ssh_host=172.16.142.165
+
+[artifactory-servers]
+artifactory ansible_ssh_host=172.16.143.119
+
+[gerrit-ubuntu-servers]
+gerrit ansible_ssh_host=172.16.133.77
+
+[test-gerrit-ubuntu-servers]
+test-gerrit ansible_ssh_host=172.16.133.14
+
+[jenkins-hosts:children]
+jenkins-servers
+jenkins-slaves
+
+[ipp-compilation-servers]
+#ipp ansible_ssh_host=172.16.132.56
+ipp ansible_ssh_host=172.16.133.117
+
+[sanjer-servers]
+sanjer ansible_ssh_host=172.16.145.11
+
+#[sonar-servers]
+#sonar ansible_ssh_host=172.16.145.51
+
+
+[sbc-nfs]
+sbc-nfs ansible_ssh_host=172.16.142.68
