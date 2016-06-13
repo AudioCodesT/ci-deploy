@@ -1,6 +1,0 @@
----
-# Hosts to be added to /etc/hosts
-
-hosts_gerrit_ip: '172.16.133.77'
-hosts_artifactory_ip: '172.16.143.119'
-hosts_sanjer_ip: '172.16.145.11'

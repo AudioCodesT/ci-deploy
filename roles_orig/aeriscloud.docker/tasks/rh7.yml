@@ -1,5 +1,0 @@
-- name: "Install docker on rh7"
-  yum: >
-    name=docker-engine
-    state=present
-  notify: Restart Docker

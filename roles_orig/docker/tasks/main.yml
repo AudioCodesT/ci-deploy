@@ -1,8 +1,0 @@
----
--   include: remove.yml
-    when: docker_remove == true
-
--   include: install.yml
-    when: docker_remove != true
-
-

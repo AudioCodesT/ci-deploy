@@ -1,5 +1,0 @@
-#- name: unpack
-- unarchive: src=/home/centos/ipp_test/ipp_toolchain.bz.tar dest=/opt
-- command: ./ipp-setup.sh
-  args:
-    chdir: /opt/ipp_toolchain

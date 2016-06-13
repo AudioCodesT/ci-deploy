@@ -1,2 +1,0 @@
-- name: install the latest version of bzip2
-  yum: name=bzip2 state=latest

@@ -1,2 +1,0 @@
-- name: "Install mysql-utilities"
-  yum: name=mysql-utilities state=installed
