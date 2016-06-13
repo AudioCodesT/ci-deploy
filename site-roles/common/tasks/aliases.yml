@@ -1,0 +1,25 @@
+---
+
+- name: Configure ~/.{{ aliases_shell }}_aliases
+  become_user: "{{ ansible_ssh_user }}"
+  become: True
+  lineinfile: >
+    dest=~/.{{ aliases_shell }}_aliases
+    line="{{ item }}"
+    create=yes
+    state=present
+  with_items: aliases_entries
+
+- name: If bash add load source into .bashrc
+  become_user: "{{ ansible_ssh_user }}"
+  become: True
+  lineinfile: >
+    dest=~/.bashrc
+    line="if [ -f ~/.bash_aliases ]; then\n . ~/.bash_aliases\n fi"
+    state=present
+    backup=yes
+  when: aliases_shell == "bash"
+
+
+
+

@@ -1,0 +1,42 @@
+
+- ec2_remote_facts:
+   aws_access_key: "{{ aws_access_key }}"
+   aws_secret_key: "{{ aws_secret_key }}"
+   region: "{{ aws_region }}"
+   filters:
+      "tag:Name": "SBC-nfssrv"
+  register: nfs
+  tags:
+    - ec2get
+
+- name: Print facts
+  debug: msg="{{ nfs }}"
+  tags:
+    - ec2get
+
+- name: Print facts II
+  debug: msg="{{ item.private_ip_address }}"
+  with_items:
+    - "{{ nfs.instances }}"
+  tags:
+    - ec2get
+
+- set_fact:
+    nfs_host_ip: "{{ item.private_ip_address }}"
+  with_items:
+    - "{{ nfs.instances }}"
+  tags:
+    - ec2get
+  when: nfs_client == true
+
+- name: Print NFS Ip facts
+  debug: msg="nfs host ip discovered @ {{ nfs_host_ip }}"
+  tags:
+    - ec2get
+
+- name: "Create sde direcory"
+  file: path="/sde" recurse=yes state=directory mode=0755 owner=root group=root
+  become: yes
+
+- name: Mount nfs volume if nfs_client == true
+  mount: name=/sde src="{{ nfs_host_ip}}:/" fstype=nfs opts=ro state=mounted

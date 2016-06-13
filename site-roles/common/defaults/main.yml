@@ -1,0 +1,25 @@
+---
+# file: roles/common/defaults/main.yml 
+ac:
+  user: "ac"
+  group: "ac"
+  home_dir: "/home/ac"
+  runtime_dir: "/opt/ac"
+  static_content_dir: "/opt/ac/static"
+  java_major_version: "8"
+  java_minor_version: "45"
+  java_version: "1.8.0_45"
+  tomcat_version: "8.0.21"
+  domain_name: "audiocodes.com"
+tomcat:
+  version: "8.0.21"
+aliases_shell: bash
+aliases_entries:
+  - "alias ga='git add'"
+  - "alias gc='git commit'"
+  - "alias gd='git diff'"
+  - "alias gl='git log'"
+  - "alias glo='git log --oneline'"
+  - "alias gp='git push'"
+  - "alias gs='git status'"
+  - "alias ping='ping -c4'"

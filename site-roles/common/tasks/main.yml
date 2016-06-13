@@ -1,0 +1,47 @@
+- name: "Disable selinux"
+  selinux: state=disabled
+
+- name: "Set hostname"
+  shell:
+    hostnamectl set-hostname {{ inventory_hostname }}
+
+- name: "Add AudioCodes group"
+  group: name={{ ac.group }}
+
+- name: "Add AudioCodes user"
+  user: name={{ ac.user }} group={{ ac.group }} home={{ ac.home_dir }}
+
+- name: "Configure AudioCodes as sudoer"
+  template: src=ac dest=/etc/sudoers.d/ac mode=0644 owner=root group=root
+
+- name: "Create AudioCodes runtime directory"
+  file: path="{{ ac.runtime_dir }}/tools/" recurse=yes state=directory mode=0755 owner={{ ac.user }} group={{ ac.group }}
+
+- name: "Create AudioCodes config directory"
+  file: path="{{ ac.runtime_dir }}/conf/" recurse=yes state=directory mode=0755 owner={{ ac.user }} group={{ac.group }}
+
+- name: "Install packadges we want on all hosts"
+  #yum: name="{{ item }}" state=latest
+  yum: name={{ item }} state=latest 
+  with_items:
+    - bash-completion
+    - vim
+    - python-pip
+    - python-boto
+    - bash-completion
+  #when: ansible_os_family == "RedHat" and ansible_distribution_version != '6.7'
+  tags:
+    - packs
+# mysql my.cnf
+  #become_user: "{{ ansible_ssh_user }}"
+#- name: Gather EC2 facts
+- name: perform nfs-client operations
+  include: nfs-client.yml
+  when: nfs_client == true
+
+- name: install python-redis for ansible caching
+  pip: name=redis
+  when: ansible_connection == 'local'
+
+- include: aliases.yml
+  when: ansible_connection == 'local'
