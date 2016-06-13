@@ -9,3 +9,4 @@ aws_access_key: "{{ lookup('env','AWS_ACCESS_KEY') }}"
 aws_secret_key: "{{ lookup('env','AWS_SECRET_KEY') }}"
 aws_region: "{{ lookup('env','AWS_REGION') }}"
 nfs_client: false
+ac_domain_name_suffix: 'corp.audiocodes.com'
