@@ -1,0 +1,35 @@
+---
+- name: Installs TEST Gerrit Code Review
+  hosts: test-gerrit-ubuntu-servers
+  sudo: true
+ 
+  vars:
+    ansible_ssh_user: ubuntu
+
+    # custom smtp configuration
+    gerrit_custom_smtp: true
+    gerrit_sendemail_smtp_server: 'smtp.office365.com'
+    gerrit_smtp_port: 587
+    gerrit_smtp_encryption_medhod: 'tls'
+    gerrit_smtp_username: 'devopssmtp@audiocodes.com'
+    gerrit_smtp_password: 'ilov3AWScloud$' # need to encrypt !
+    gerrit_mail_from_addr: 'test_gerrit@audiocodes.com'
+    # session expiration ... 
+    gerrit_web_sessions_maxage: '1 year'
+
+    gerrit_host_name: 'test-gerrit'
+
+    gerrit_canonical_web_url: 'http://test-gerrit:8080/'
+    gerrit_database_db: 'test2_reviewdb'
+    gerrit_database_username: 'testgerrit'
+    gerrit_database_password: 'test'
+
+    gerrit_test_env: 'true'
+    gerrit_dump_file: 'gerritdb_prod_100516.dmp'
+
+  roles:
+    #- dns
+    - kbrebanov.java
+    - kbrebanov.git
+    - kbrebanov.gerrit
+  tasks:

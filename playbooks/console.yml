@@ -1,0 +1,20 @@
+---
+- name: Setup Development env
+  hosts: console
+  become: true
+  pre_tasks:
+    - include_vars: ec2_vars/ec2.yml
+
+  roles:
+    - geerlingguy.repo-epel 
+    - common
+    - dns
+    - franklinkim.vim
+    - geerlingguy.redis # fopr ansible caching
+  vars:
+    #nfs_client: true
+    vim_config:
+      - 'set tabstop=2'
+      - 'set shiftwidth=2'
+      - 'syntax enable'
+  tasks:

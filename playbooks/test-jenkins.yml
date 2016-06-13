@@ -1,0 +1,16 @@
+---
+- name: Installs Jenkins CI server for TESTS
+  hosts: test-jenkins-servers
+  become: true
+   	
+  vars:
+    - ansible_ssh_user: centos
+
+  roles:
+    #- dns
+    #- ntp
+    #- timezone
+    - kbrebanov.git
+    #- geerlingguy.java
+    #- geerlingguy.repo-epel
+    #- geerlingguy.jenkins

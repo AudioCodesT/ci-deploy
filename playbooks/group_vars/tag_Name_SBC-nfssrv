@@ -1,0 +1,2 @@
+ansible_ssh_user: ubuntu
+aws_region: eu-west-1

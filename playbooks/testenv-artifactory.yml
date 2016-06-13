@@ -1,0 +1,25 @@
+---
+# gerrit specific
+ #- hosts: localhost
+   # validate vpc ...
+
+
+ - hosts: localhost
+   connection: local
+   pre_tasks:
+    - include_vars: ec2_vars/artifactory.yml
+   roles:
+    - provision-ec2
+
+# Jenkins specifc
+ - hosts: tag_Name_test_Artifactory
+   sudo: true
+   vars:
+    artifactory_license: pro 
+   tasks:
+    - include_vars: ec2_vars/artifactory.yml
+   roles:
+    #- provision-ec2 
+    - dns
+    - geerlingguy.repo-epel
+    - artifactory

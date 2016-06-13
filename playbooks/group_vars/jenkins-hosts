@@ -1,0 +1,2 @@
+#file: group_vars/jenkins-servers
+docker_daemon: true

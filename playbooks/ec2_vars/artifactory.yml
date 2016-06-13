@@ -1,0 +1,12 @@
+ec2_keypair: "Jenkins & App subnets machines key pair"
+ec2_security_group: [ "sg-c5bbe3ac", "sg-77bce41e"]
+ec2_instance_type: "m4.large"
+ec2_image: "ami-e68f82fb"
+ec2_subnet_ids: ['subnet-8ce472f7']
+ec2_region: "eu-central-1"
+ec2_tag_Name: "test-Artifactory"
+ec2_tag_Type: "Artifact repo test"
+ec2_tag_Environment: "test"
+ec2_volume_size: 200 
+num_of_instances: 1
+ec2_Vendor_Name: "Tikal"

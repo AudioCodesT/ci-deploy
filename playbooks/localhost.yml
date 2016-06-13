@@ -1,0 +1,16 @@
+---
+- name: Setup Development env
+  hosts: console
+  sudo: true
+ 
+  roles:
+    - common
+    - dns
+    - franklinkim.vim
+  vars:
+    vim_config:
+      - 'set tabstop=2'
+      - 'set shiftwidth=2'
+      - 'syntax enable'
+  tasks:
+    

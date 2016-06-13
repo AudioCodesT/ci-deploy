@@ -1,0 +1,8 @@
+---
+- name: Installs Jenkins slave for ARM project
+  hosts: arm-jenkins-slaves
+  sudo: true
+  roles:
+     - dns
+     - geerlingguy.repo-epel
+     - js-tools

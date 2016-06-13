@@ -1,0 +1,17 @@
+---
+- name: Setup SBC slave
+  hosts: sbc-servers
+  become: true
+
+  pre_tasks:
+   - include_vars: ec2_vars/ec2.yml
+ 
+  roles:
+    - geerlingguy.repo-epel 
+    - common
+
+  vars:
+    nfs_client: true
+
+  tasks:
+    
