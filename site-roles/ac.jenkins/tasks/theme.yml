@@ -1,0 +1,18 @@
+---
+- name: "check if theme plugin is going to be installed"
+  set_fact:
+    jenkins_theme: true
+  with_items: jenkins_plugins
+  when: (jenkins_theme is undefined) and (( item.name == "simple-theme-plugin") and ( item.enabled == "true"))
+
+- name: "update Jenkins Theame setting"
+  template: src="{{ jenkins_theme_conf_file }}.j2" dest="{{ jenkins_home }}/{{ jenkins_theme_conf_file }}" owner="{{ jenkins_user }}" group="{{ jenkins_group }}" mode=0755
+  register: theme_config
+  when: jenkins_theme is defined
+
+- debug: var=theme_config
+
+- name: "Restart Jenkins on theme config changes"
+  service: name=jenkins state=restarted
+  when: theme_config.changed
+

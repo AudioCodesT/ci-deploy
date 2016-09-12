@@ -1,0 +1,30 @@
+JENKINS_HOME="{{ jenkins_home | default('/var/lib/jenkins') }}"
+
+JENKINS_JAVA_CMD="{{ jenkins_java_cmd | default('') }}"
+
+JENKINS_USER="{{ jenkins_user | default('jenkins') }}"
+
+#JENKINS_INSTALL_SKIP_CHOWN="false"
+
+{% for i in jenkins.java_options %}
+JENKINS_JAVA_OPTIONS="$JENKINS_JAVA_OPTIONS -D{{ i }}"
+{% endfor %}
+
+JENKINS_PORT="{{ jenkins_http_port }}"
+
+#{% if jenkins_version < 2 %}
+JENKINS_AJP_PORT="-1"
+#{% else %}
+#JENKINS_AJP_PORT="{{ jenkins_ajp_port }}"
+#{% endif %}
+
+JENKINS_DEBUG_LEVEL="{{ jenkins_debug_level }}"
+
+JENKINS_ENABLE_ACCESS_LOG="{{ jenkins_enable_access_log }}"
+
+JENKINS_HANDLER_MAX="{{ jenkins_handler_max }}"
+
+JENKINS_HANDLER_IDLE="{{ jenkins_handler_idle }}"
+
+JENKINS_ARGS=""
+JENKINS_ARGS+=" --prefix="
