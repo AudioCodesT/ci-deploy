@@ -171,7 +171,8 @@
 
 # Configure Gerrit reverse proxy via nginx
 - include: nginx.yml
-  when: gerrit_test_env is not defined 
+  tags:
+    - nginx 
 
 - name: Copy initial git repos
   action: copy src={{ item }} dest=/tmp owner=gerrit group=gerrit
@@ -220,3 +221,8 @@
     group: "{{ gerrit_group }}"
   notify: restart gerrit
   tags: install_plugins
+
+# Install software for vi integration
+#- include: viInteg.yml
+#  tags:
+#    - viInteg

@@ -124,13 +124,15 @@ jenkins_plugins:
   - { name: "aws-java-sdk", version: "1.10.45", enabled: "true" }
   - { name: "ec2", version: "1.35", enabled: "true" }
   - { name: "bouncycastle-api", version: "1.648.3" }  
-  - { name: "aws-credentials", version: "1.11", enabled: "true" }
+  - { name: "aws-credentials", version: "1.16", enabled: "true" }
   - { name: "aws-java-sdk", version: "1.10.50", enabled: "true" }
   - { name: "node-iterator-api", version: "1.5", enabled: "true" }
   - { name: "jobConfigHistory", version: "2.13", enabled: "true" }
   - { name: "cloudbees-folder", version: "5.5", enabled: "true" }
   - { name: "monitoring", version: "1.59.0", enabled: "true" }
   - { name: "naginator", version: "1.17.1", enabled: "true" }
+  - { name: "text-finder", version: "1.10", enabled: "true" }
+  - { name: "build-timeout", version: "1.17.1", enabled: "true" }
   - { name: "xunit", version: "1.102", enabled: "true" }
   - { name: "simple-theme-plugin", version: "0.3", enabled: "true", extention: "jpi" }
 

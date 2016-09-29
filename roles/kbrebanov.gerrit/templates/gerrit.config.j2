@@ -31,9 +31,9 @@
         smtpEncryption = {{ gerrit_smtp_encryption_medhod }} 	# tls
         smtpUser = {{ gerrit_smtp_username }} 							  # devopssmtp@audiocodes.com
         smtpPass = {{ gerrit_smtp_password }}									# ilov3AWScloud$
+{% endif %}
         from = USER
         includeDiff = true 
-{% endif %}
 {% if gerrit_mail_from_addr is defined %}
 [user]
 				email = {{ gerrit_mail_from_addr }}

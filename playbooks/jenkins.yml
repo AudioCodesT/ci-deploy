@@ -4,12 +4,19 @@
   sudo: true
    	
   vars:
-    - ansible_ssh_user: centos
+    ansible_ssh_user: centos
+    jenkins_hostname: jenkins
+    ssl_enabled: yes
+    jenkins_version: 2.7.4
+    java_version: 8	
+    java_subversion: 92	
 
   roles:
-    - dns
+    #- dns
+    #- common
     #- ntp
-    - timezone
-    - kbrebanov.git
-    - geerlingguy.jenkins
-    - { role: docker, docker_remove: true, }
+    #- timezone
+    #- kbrebanov.git
+    #- williamyeh.oracle-java
+    - geerlingguy.repo-epel
+    - ac.jenkins

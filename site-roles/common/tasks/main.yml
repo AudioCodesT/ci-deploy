@@ -5,6 +5,16 @@
   shell:
     hostnamectl set-hostname {{ inventory_hostname }}
 
+- name: "Add {{ ansible_hostname }} to hosts file"
+  lineinfile:
+    dest=/etc/hosts
+    insertafter=EOF
+    line="127.0.0.1 {{ inventory_hostname }}"
+    regexp="^127\.0\.0\.1 {{ inventory_hostname }}$"
+    state=present
+  tags:
+  - setHosts
+
 - name: "Add AudioCodes group"
   group: name={{ ac.group }}
 
@@ -21,20 +31,19 @@
   file: path="{{ ac.runtime_dir }}/conf/" recurse=yes state=directory mode=0755 owner={{ ac.user }} group={{ac.group }}
 
 - name: "Install packadges we want on all hosts"
-  #yum: name="{{ item }}" state=latest
   yum: name={{ item }} state=latest 
   with_items:
     - bash-completion
     - vim
+    - epel-release
     - python-pip
     - python-boto
     - bash-completion
-  #when: ansible_os_family == "RedHat" and ansible_distribution_version != '6.7'
+    - awscli
+    - "{{ ns_pkgs }}"
   tags:
-    - packs
-# mysql my.cnf
-  #become_user: "{{ ansible_ssh_user }}"
-#- name: Gather EC2 facts
+  - packs
+
 - name: perform nfs-client operations
   include: nfs-client.yml
   when: nfs_client == true
@@ -45,3 +54,23 @@
 
 - include: aliases.yml
   when: ansible_connection == 'local'
+
+- include: ssl.yml
+  when: ssl_enabled
+  tags:
+  - ssl
+
+- include: dist-keys.yml
+  when: dist_keys is defined
+  tags: 
+  - dist-keys
+
+- include: clean-keys.yml
+  when: clean_keys is defined
+  tags: 
+  - clean-keys
+
+#- include: install-ansible.yml
+#  when: install_ansible is defined
+#  tags:
+#  - install-ansible

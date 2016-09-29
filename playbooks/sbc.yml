@@ -1,6 +1,6 @@
 ---
 - name: Setup SBC slave
-  hosts: sbc-servers
+  hosts: tag_Name_sbc_build_slave
   become: true
 
   pre_tasks:

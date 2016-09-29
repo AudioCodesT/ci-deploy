@@ -23,3 +23,8 @@ aliases_entries:
   - "alias gp='git push'"
   - "alias gs='git status'"
   - "alias ping='ping -c4'"
+
+ns_pkgs:
+  - bind
+  - bind-utils
+  - bind-chroot

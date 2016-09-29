@@ -1,5 +1,6 @@
 #file: group_vars/jenkins-servers
 docker_daemon: false
+vpc_subnet: '172.31.%.%'
 ansible_ssh_user: centos
 rds_mysql_master_pass: '1TTqYAHtdT'
 rds_mysql_master_user: root
@@ -9,4 +10,9 @@ aws_access_key: "{{ lookup('env','AWS_ACCESS_KEY') }}"
 aws_secret_key: "{{ lookup('env','AWS_SECRET_KEY') }}"
 aws_region: "{{ lookup('env','AWS_REGION') }}"
 nfs_client: false
+ssl_enabled: false
 ac_domain_name_suffix: 'corp.audiocodes.com'
+
+
+ac_ssl_wc_key_location: '/etc/ssl/certs/AC_STAR.key'
+ac_ssl_wc_cer_location: '/etc/ssl/certs/AC_STAR.cer'

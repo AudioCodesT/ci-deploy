@@ -1,0 +1,54 @@
+---
+# Create instance on ec2 ... + performe db operations via dbmanage
+- hosts: localhost
+  connection: local
+  #become: true
+  pre_tasks:
+   - include_vars: ec2_vars/artifactory-splitted.yml
+  vars:
+   splitted: true
+  roles:
+   - { role: provision-ec2 }
+   ####- { role: dbmanage }
+
+- name: Installs Artifactory server
+  hosts: "tag_Name_artifactory_splitted"
+  sudo: true
+   	
+  vars:
+   # database / rds specific
+   db_mode: remote
+   db_flavor: mysql
+   database_admin_user: audiocodes
+   database_admin_password: qtFYURQ3ubb6
+   database_hostname: rdci.c1tyrsglic7l.eu-central-1.rds.amazonaws.com
+   app_db_credentials:
+     - { app_name: "artifactory",
+         #app_hostname: ""
+         database_hostname: "{{ database_hostname }}",
+         database_admin_user: "{{ database_admin_user }}",
+         database_admin_password: "{{ database_admin_password }}",
+         app_database_name: "artitest",
+         app_database_user: "artitest",
+         app_database_password: "artitestpw",
+         database_encoding: "utf8"
+       }
+   ansible_ssh_user: centos
+   java_version: 8
+   java_subversion: 66
+
+  pre_tasks:
+    - file: path="{{ item }}" state=directory mode=0755 owner=root group=root recurse=true
+      with_items:
+        - /data
+        - /backup
+        - /opt/artifactory/artifactory-oss-4.4.0/
+    - filesystem: fstype=ext4 dev=/dev/xvdb 
+    - filesystem: fstype=ext4 dev=/dev/xvdc
+    - mount: name=/opt/artifactory/artifactory-oss-4.4.0/data src=/dev/xvdb fstype=ext4 state=mounted
+    - mount: name=/opt/artifactory/artifactory-oss-4.4.0/backup src=/dev/xvdc fstype=ext4 state=mounted
+  roles:
+    - dns
+    - williamyeh.oracle-java
+    - geerlingguy.repo-epel
+    - artifactory

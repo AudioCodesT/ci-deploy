@@ -1,0 +1,45 @@
+---
+# Create instance on ec2 ... + performe db operations via dbmanage 
+- hosts: localhost
+  connection: local
+  #become: true
+  #pre_tasks:
+  # - include_vars: ec2_vars/artifactory.yml
+  vars:
+   # database / rds specific
+   db_mode: remote
+   db_flavor: mysql
+   database_admin_user: audiocodes
+   database_admin_password: qtFYURQ3ubb6
+   database_hostname: rdci.c1tyrsglic7l.eu-central-1.rds.amazonaws.com
+   app_db_credentials:
+     - { app_name: "artifactory", 
+         #app_hostname: ""
+         database_hostname: "{{ database_hostname }}", 
+         database_admin_user: "{{ database_admin_user }}", 
+         database_admin_password: "{{ database_admin_password }}", 
+         app_database_name: "artitest", 
+         app_database_user: "artitest",
+         app_database_password: "artitestpw",
+         database_encoding: "utf8" 
+       }
+  roles:
+   #- { role: provision-ec2 }
+   ####- { role: dbmanage }
+
+# setup Artifactory ...
+- hosts: artifactory-pro
+  become: true
+  pre_tasks:
+   - include_vars: ec2_vars/artifactory.yml
+  vars:
+   # Artifacory specific
+   artifactory_flavor: pro
+   # java specific
+   java_version: 8
+   java_subversion: 51
+  roles:
+   - { role: dns }
+   - { role: geerlingguy.repo-epel }
+   - { role: williamyeh.oracle-java }
+   - { role: artifactory-ansible-role }

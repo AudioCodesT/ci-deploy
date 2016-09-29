@@ -1,0 +1,13 @@
+# copy certs to nginx path
+#
+#
+#
+- name: copy ssl key to {{ ac_ssl_wc_key_location }}
+  copy: src=STAR_CORP_AC_COM.key dest={{ ac_ssl_wc_key_location }} owner=root group=root mode=644 backup=yes
+
+- name: copy ssl cert to {{ ac_ssl_wc_cer_location }}
+  copy: src=STAR_CORP_AC_COM.cer dest={{ ac_ssl_wc_cer_location }} owner=root group=root mode=644 backup=yes
+#
+#
+#rgsiter_fact s:q
+#sl gfile location

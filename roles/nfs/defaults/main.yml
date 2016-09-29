@@ -1,2 +1,2 @@
 ---
-nfs_exports: [ "/exports/toolchain" ]
+nfs_exports: [ "/Dynamic_Compile" ]

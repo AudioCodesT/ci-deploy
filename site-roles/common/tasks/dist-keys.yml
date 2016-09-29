@@ -1,0 +1,41 @@
+---
+
+- name: "check local dir /tmp/AudioCodes-CICD-Apps.pem if exists, if not fail"
+  local_action:
+    module: stat
+    path: /tmp/AudioCodes-CICD-Apps.pem
+  register: appskey
+
+- name: "check local dir /tmp/AudioCodes-CICD-Management.pem if exists, if not fail"
+  local_action:
+    module: stat
+    path: /tmp/AudioCodes-CICD-Management.pem
+  register: mgmtkey
+
+#- debug: var=appskey.stat
+#- debug: var=mgmtkey.stat
+
+- name: "copy pem files for root user to ~/.ssh && /root/.ssh"
+  copy: 
+    src: "/tmp/{{ item }}" 
+    dest: "/root/.ssh/{{ item }}" 
+    owner: "root"
+    group: "root"
+    mode: "0400"
+  with_items:
+  - AudioCodes-CICD-Management.pem
+  - AudioCodes-CICD-Apps.pem
+  when: mgmtkey.stat.exists and appskey.stat.exists
+
+- name: "copy pem file for ansible_ssh_user to ~/.ssh && /root/.ssh"
+  copy:
+    src: "/tmp/{{ item }}" 
+    dest: "/home/{{ ansible_ssh_user}}/.ssh/{{ item }}"
+    owner: "{{ ansible_ssh_user }}"
+    group: "{{ ansible_ssh_user}}"
+    mode: "0400"
+  with_items:
+  - AudioCodes-CICD-Management.pem
+  - AudioCodes-CICD-Apps.pem
+  when: mgmtkey.stat.exists and appskey.stat.exists
+

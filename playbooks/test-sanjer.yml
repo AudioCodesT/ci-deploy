@@ -1,0 +1,26 @@
+---
+- name: Installs test sanjer server 
+  hosts: test-sanjer-servers
+  #gather_facts: no
+  sudo: true
+ 
+  vars:
+    - ansible_ssh_user: centos
+    - ansible_distribution: CentOS
+    
+    - sonar_host_name: '172.16.145.218'
+    
+  # MySQL database connection details.
+    - sonar_mysql_username: test-sonar
+    - sonar_mysql_password: test-sonar
+
+    - sonar_mysql_database: test-sonar
+
+  roles:
+    #- dns
+    #- common
+    #- williamyeh.oracle-java
+    #- tomcat
+    - geerlingguy.sonar
+  
+  tasks:

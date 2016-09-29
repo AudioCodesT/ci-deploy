@@ -28,8 +28,8 @@ gerrit_sshd_listen_address: '*:29418'
 gerrit_proxy_port: '80'
 gerrit_http_port: '8080'
 gerrit_https_port: 443
-gerrit_ssl_cert: /etc/ssl/certs/awsrdgerrit.cer
-gerrit_ssl_key: /etc/ssl/certs/awsrdgerrit.key
+gerrit_ssl_cert: "{{ ac_ssl_wc_cer_location }}"
+gerrit_ssl_key: "{{ ac_ssl_wc_key_location }}"
 
 gerrit_logdir: /var/gerrit/logs
 

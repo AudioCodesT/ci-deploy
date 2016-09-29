@@ -1,0 +1,13 @@
+---
+
+- name: Ensure Perl is installed.
+  sudo: yes
+  apt: pkg=perl state=installed
+  
+- name: Copy script for installing microsoft server SQLCMD
+  copy:
+    src=viInteg/Ubuntu_14.04_MSFT_ODBC_Driver.sh
+    dest=/tmp mode="a+x"
+
+- name: Running the microsoft server SQLCMD script
+  shell: sudo /tmp/Ubuntu_14.04_MSFT_ODBC_Driver.sh

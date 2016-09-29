@@ -1,0 +1,34 @@
+---
+- hosts: localhost
+  connection: local
+  pre_tasks:
+    - include_vars: ec2_vars/ec2.yml
+    - include_vars: ec2_vars/console.yml
+  roles:
+    - provision-ec2
+
+- name: Setup Development env
+  hosts: tag_Name_console
+  become: true
+  become_user: root
+  #gather_facts: no
+  pre_tasks:
+    - include_vars: ec2_vars/ec2.yml
+
+  roles:
+    - geerlingguy.repo-epel 
+    - common
+    - aws-cli
+    #- dns
+    - franklinkim.vim
+    #- geerlingguy.redis # fopr ansible caching
+  vars:
+    dist_keys: true
+    install_ansible: true
+    #clean_keys: true # use when you want to remove keys 
+    #nfs_client: true
+    vim_config:
+      - 'set tabstop=2'
+      - 'set shiftwidth=2'
+      - 'syntax enable'
+  tasks:

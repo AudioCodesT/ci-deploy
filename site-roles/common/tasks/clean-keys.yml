@@ -1,0 +1,48 @@
+---
+
+- name: "check local dir /root/.ssh/AudioCodes-CICD-Apps.pem if exists"
+  stat: 
+    path: "/root/.ssh/AudioCodes-CICD-Apps.pem"
+  register: root_appskey
+
+- name: "check local dir /home/centos/.ssh/AudioCodes-CICD-Apps.pem if exists"
+  stat:
+    path: "/home/centos/.ssh/AudioCodes-CICD-Apps.pem"
+  register: centos_appskey
+
+- name: "check local dir /root/.ssh/AudioCodes-CICD-Management.pem if exists"
+  become: true
+  stat:
+    path: "/root/.ssh/AudioCodes-CICD-Management.pem"
+  register: root_mgmtkey
+
+- name: "check local dir /home/centos/.ssh/AudioCodes-CICD-Management.pem if exists"
+  stat:
+    path: "/home/centos/.ssh/AudioCodes-CICD-Management.pem"
+  register: centos_mgmtkey
+
+- debug: var=root_appskey.stat
+- debug: var=root_mgmtkey.stat
+- debug: var=centos_appskey.stat
+- debug: var=centos_mgmtkey.stat
+
+- file: 
+    path: "/root/.ssh/AudioCodes-CICD-Apps.pem"              
+    state: absent
+  when: root_appskey.stat.exists
+
+- file: 
+    path: "/root/.ssh/AudioCodes-CICD-Management.pem"
+    state: absent
+  when: root_mgmtkey.stat.exists
+
+- file: 
+    path: "/home/centos/.ssh/AudioCodes-CICD-Apps.pem"
+    state: absent
+  when: centos_appskey.stat.exists
+
+- file: 
+    path: "/home/centos/.ssh/AudioCodes-CICD-Management.pem"
+    state: absent
+  when: centos_mgmtkey.stat.exists
+

@@ -8,20 +8,36 @@
     #update_timezone: false
     ansible_ssh_user: ubuntu
     # custom smtp configuration
-    gerrit_custom_smtp: true
-    gerrit_sendemail_smtp_server: 'smtp.office365.com'
-    gerrit_smtp_port: 587
-    gerrit_smtp_encryption_medhod: 'tls'
-    gerrit_smtp_username: 'devopssmtp@audiocodes.com'
-    gerrit_smtp_password: 'ilov3AWScloud$' # need to encrypt !
+    gerrit_custom_smtp: false
+    gerrit_sendemail_smtp_server: 'aclmail'
+    #gerrit_sendemail_smtp_server: 'smtp.office365.com'
+
+    #gerrit_smtp_port: 587
+    #gerrit_smtp_encryption_medhod: 'tls'
+    #gerrit_smtp_username: 'devopssmtp@audiocodes.com'
+    #gerrit_smtp_password: 'ilov3AWScloud$' # need to encrypt !
+
     gerrit_mail_from_addr: 'gerrit@audiocodes.com'
     # session expiration ... 
     gerrit_web_sessions_maxage: '1 year'
 
+    gerrit_host_name: 'gerrit'
+
+    gerrit_canonical_web_url: 'https://gerrit.corp.audiocodes.com/'
+    gerrit_database_db: 'reviewdb'
+    #gerrit_database_username: 'gerrit'
+    #gerrit_database_password: 'test'
+
+    gerrit_test_env: 'false'
+    gerrit_dump_file: 'gerritdb_prod_100516.dmp'
+
+    ssl_enabled: yes
+
   roles:
-    - dns
-    - timezone
-    - kbrebanov.java
-    - kbrebanov.git
+    #- dns
+    - common
+    #- timezone
+    #- kbrebanov.java
+    #- kbrebanov.git
     - kbrebanov.gerrit
   tasks:

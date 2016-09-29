@@ -34,9 +34,9 @@
   tags:
     - ec2get
 
-- name: "Create sde direcory"
-  file: path="/sde" recurse=yes state=directory mode=0755 owner=root group=root
+- name: "Create dce direcory"
+  file: path="/dce" recurse=yes state=directory mode=0755 owner=root group=root
   become: yes
 
 - name: Mount nfs volume if nfs_client == true
-  mount: name=/sde src="{{ nfs_host_ip}}:/" fstype=nfs opts=ro state=mounted
+  mount: name=/dce src="{{ nfs_host_ip}}:/" fstype=nfs opts=ro state=mounted

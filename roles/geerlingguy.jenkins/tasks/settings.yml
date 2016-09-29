@@ -1,0 +1,32 @@
+---
+- name: Ensure URL prefix is present in Jenkins config.
+  lineinfile:
+    dest: "{{ jenkins_init_file }}"
+    insertafter: '^JENKINS_ARGS='
+    regexp: '^JENKINS_ARGS\+=" --prefix='
+    line: 'JENKINS_ARGS+=" --prefix={{ jenkins_url_prefix }}"'
+  register: jenkins_init_config
+
+- name: Immediately restart Jenkins on init config changes.
+  service: name=jenkins state=restarted
+  when: jenkins_init_config.changed
+
+- name: Set HTTP port in Jenkins config.
+  lineinfile:
+    backrefs: yes
+    dest: "{{ jenkins_init_file }}"
+    regexp: '^{{ jenkins_http_port_param }}='
+    line: '{{ jenkins_http_port_param }}={{ jenkins_http_port }}'
+  register: jenkins_http_config
+
+- name: Set JENKINS_JAVA_OPTIONS in Jenkins config.
+  lineinfile:
+    backrefs: yes
+    dest: "{{ jenkins_init_file }}"
+    regexp: '^{{ jenkins_java_options_param }}='
+    line: '{{ jenkins_java_options_param }}={{ jenkins_java_options }}'
+  register: jenkins_java_options_config
+
+- name: Immediately restart Jenkins on http config changes.
+  service: name=jenkins state=restarted
+  when: jenkins_http_config.changed or jenkins_java_options_config.changed

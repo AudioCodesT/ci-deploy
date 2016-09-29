@@ -2,12 +2,14 @@
 - name: Setup Development env
   hosts: console
   become: true
+  #gather_facts: no
   pre_tasks:
     - include_vars: ec2_vars/ec2.yml
 
   roles:
     - geerlingguy.repo-epel 
     - common
+    - aws-cli
     - dns
     - franklinkim.vim
     - geerlingguy.redis # fopr ansible caching

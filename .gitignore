@@ -4,3 +4,5 @@ bin/setenv.sh
 *.retry
 ./log/ansible.log
 log/ansible.log
+dependent-roles
+galaxy-roles

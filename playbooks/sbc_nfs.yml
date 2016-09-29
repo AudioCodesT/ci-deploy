@@ -1,26 +1,33 @@
+- hosts: localhost
+  connection: local
+  pre_tasks:
+   - include_vars: ec2_vars/sbcnfs.yml
+  roles:
+   - { role: provision-ec2 }
+
 - name: Installes NFS server for SBC project
   hosts: tag_Name_SBC_nfssrv
   sudo: true
 
   vars:
     - ansible_ssh_user: centos
-    - ansible_ssh_private_key_file: ~/.ssh/AudioCodes-CICD-Management.pem
+    - ansible_ssh_private_key_file: ~/.ssh/AudioCodes-CICD-Apps.pem
 
   roles:
-    - dns
-    - geerlingguy.git
-    - geerlingguy.repo-epel
-    - nfs
-    - aws-cli
+    - { role: dns }
+    - { role: geerlingguy.git }
+    - { role: geerlingguy.repo-epel }
+    - { role: nfs }
+    - { role: aws-cli }
 
   tasks:
-    - name: temp just chown /exrpots dir
-      file: path=/exports/toolchain state=directory mode=0777 owner={{ ansible_ssh_user }} group={{ ansible_ssh_user }}
-      tags:
-       - justsync
-    - name:  Get the damn toollchain ...
-      shell: "aws s3 cp s3://audiocodes2-dce/dce.tgz /exports/toolchain/"
-      become: yes
-      become_user: "{{ ansible_ssh_user }}"
-      tags:
-       - justsync
+#    - name: temp just chown /exrpots dir
+#      file: path=/exports/toolchain state=directory mode=0777 owner={{ ansible_ssh_user }} group={{ ansible_ssh_user }}
+#      tags:
+#       - justsync
+#    - name:  Get the damn toollchain ...
+#      shell: "aws s3 cp s3://audiocodes2-dce/dce.tgz /exports/toolchain/"
+#      become: yes
+#      become_user: "{{ ansible_ssh_user }}"
+#      tags:
+#       - justsync
